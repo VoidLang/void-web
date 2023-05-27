@@ -272,12 +272,19 @@ body {
 @media(max-width: 890px) {
     .cards {
         display: block;
+        /*text-align: center;*/
     }
     .card {
         margin: auto !important;
         margin-bottom: 40px !important;
         box-sizing: border-box;
     }
+    /*
+    .card .title {
+        margin: auto !important;
+        margin-bottom: 15px !important;
+    }
+    */
     .card:nth-child(2) {
         margin-right: auto !important;
     }
@@ -289,9 +296,14 @@ body {
 @media(max-width: 480px) {
     .cards {
         padding: 30px;
+        text-align: center;
     }
     .card {
         width: 100% !important;
+    }
+    .card .title {
+        margin: auto !important;
+        margin-bottom: 15px !important;
     }
 }
 
@@ -526,6 +538,18 @@ body {
     }
     .get-started .code .indent2 {
         width: 40px;
+    }
+}
+
+@media(max-width: 320px) {
+    .get-started .code {
+        font-size: 10px;
+    }
+    .get-started .code .indent {
+        width: 15px;
+    }
+    .get-started .code .indent2 {
+        width: 30px;
     }
 }
 

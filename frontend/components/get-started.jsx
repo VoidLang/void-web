@@ -17,15 +17,15 @@ const GetStarted = () => {
                         <br/>
                         <div class="line"/>
                         <div class="indent"/><span class="type">let</span> result <span class="light">=</span> input<br/>
-                        <div class="indent2"/><span class="solid">.stream</span><span class="light">()</span><br/>
-                        <div class="indent2"/><span class="solid">.filterMap</span><span class="light">(</span><span class="type">int</span><span class="light">::</span>parse<span class="light">)</span><br/>
-                        <div class="indent2"/><span class="solid">.sort</span><span class="light">(</span><span class="light">|</span>a<span class="light">,</span> b<span class="light">|</span> b <span class="light">-</span> a<span class="light">)</span><br/>
-                        <div class="indent2"/><span class="solid">.collect()</span><br/>
+                        <div class="indent2"/><span class="light">.</span><span class="solid">stream</span><span class="light">()</span><br/>
+                        <div class="indent2"/><span class="light">.</span><span class="solid">filterMap</span><span class="light">(</span><span class="type">int</span><span class="light">::</span>parse<span class="light">)</span><br/>
+                        <div class="indent2"/><span class="light">.</span><span class="solid">sort</span><span class="light">(</span><span class="light">|</span>a<span class="light">,</span> b<span class="light">|</span> b <span class="light">-</span> a<span class="light">)</span><br/>
+                        <div class="indent2"/><span class="light">.</span><span class="solid">collect()</span><br/>
                         <br/>
                         <div class="line"/>
                         <div class="indent"/><span class="type">let</span> largest <span class="light">=</span> result<br/>
-                        <div class="indent2"/><span class="solid">.get</span><span class="light">(</span><span class="literal">0</span><span class="light">)</span><br/>
-                        <div class="indent2"/><span class="solid">.unwrap</span><span class="light">()</span><br/>
+                        <div class="indent2"/><span class="light">.</span><span class="solid">get</span><span class="light">(</span><span class="literal">0</span><span class="light">)</span><br/>
+                        <div class="indent2"/><span class="light">.</span><span class="solid">unwrap</span><span class="light">()</span><br/>
                         <br/>
                         <div class="line"/>
                         <div class="indent"/><span class="solid">println</span><span class="light">(</span><span class="light">$</span><span class="string">"value: </span><span class="literal">&#123;largest&#125;</span><span class="string">"</span><span class="light">)</span><br/>

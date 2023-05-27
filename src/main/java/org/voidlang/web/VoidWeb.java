@@ -15,7 +15,7 @@ public enum VoidWeb {
 
         loadRoutes();
 
-        server.listen(80, () -> Logger.info("[VoidWeb] Webserver has been started."));
+        server.listen(1234, () -> Logger.info("[VoidWeb] Webserver has been started."));
     }
 
     private void loadRoutes() {
