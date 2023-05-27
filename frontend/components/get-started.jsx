@@ -18,7 +18,7 @@ const GetStarted = () => {
                         <div class="line"/>
                         <div class="indent"/><span class="type">let</span> result <span class="light">=</span> input<br/>
                         <div class="indent2"/><span class="solid">.stream</span><span class="light">()</span><br/>
-                        <div class="indent2"/><span class="solid">.filterMap</span><span class="light">(</span>int<span class="light">::</span>parse<span class="light">)</span><br/>
+                        <div class="indent2"/><span class="solid">.filterMap</span><span class="light">(</span><span class="type">int</span><span class="light">::</span>parse<span class="light">)</span><br/>
                         <div class="indent2"/><span class="solid">.sort</span><span class="light">(</span><span class="light">|</span>a<span class="light">,</span> b<span class="light">|</span> b <span class="light">-</span> a<span class="light">)</span><br/>
                         <div class="indent2"/><span class="solid">.collect()</span><br/>
                         <br/>
