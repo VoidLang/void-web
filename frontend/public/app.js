@@ -48,6 +48,14 @@ const Footer = () => {
     )
 }
 
+const Type = (x) => React.createElement("span", {class: "type"}, x);
+const String = (x) => React.createElement("span", {class: "string"}, x);
+const Light = (x) => React.createElement("span", {class: "light"}, x);
+const Solid = (x) => React.createElement("span", {class: "solid"}, x);
+const Literal = (x) => React.createElement("span", {class: "literal"}, x);
+const Indent = () => React.createElement("div", {class: "indent"});
+const DoubleIndent = () => React.createElement("div", {class: "indent2"});
+const Line = () => React.createElement("div", {class: "line"});
 const GetStarted = () => {
     return (
         React.createElement("div", {class: "get-started"}, 
@@ -62,24 +70,21 @@ const GetStarted = () => {
                     )
                 ), 
                 React.createElement("div", {class: "code"}, 
-                    React.createElement("span", {class: "type"}, "void"), " main", React.createElement("span", {class: "light"}, "() {"), React.createElement("br", null), 
-                        React.createElement("div", {class: "indent"}), React.createElement("span", {class: "type"}, "let"), " input ", React.createElement("span", {class: "light"}, "="), " ", React.createElement("span", {class: "light"}, "["), React.createElement("span", {class: "string"}, "\"one\""), React.createElement("span", {class: "light"}, ","), " ", React.createElement("span", {class: "string"}, "\"12\""), React.createElement("span", {class: "light"}, ","), " ", React.createElement("span", {class: "string"}, "\"hello\""), React.createElement("span", {class: "light"}, ","), " ", React.createElement("span", {class: "string"}, "\"-7\""), React.createElement("span", {class: "light"}, "]"), React.createElement("br", null), 
-                        React.createElement("br", null), 
-                        React.createElement("div", {class: "line"}), 
-                        React.createElement("div", {class: "indent"}), React.createElement("span", {class: "type"}, "let"), " result ", React.createElement("span", {class: "light"}, "="), " input", React.createElement("br", null), 
-                        React.createElement("div", {class: "indent2"}), React.createElement("span", {class: "light"}, "."), React.createElement("span", {class: "solid"}, "stream"), React.createElement("span", {class: "light"}, "()"), React.createElement("br", null), 
-                        React.createElement("div", {class: "indent2"}), React.createElement("span", {class: "light"}, "."), React.createElement("span", {class: "solid"}, "filterMap"), React.createElement("span", {class: "light"}, "("), React.createElement("span", {class: "type"}, "int"), React.createElement("span", {class: "light"}, "::"), "parse", React.createElement("span", {class: "light"}, ")"), React.createElement("br", null), 
-                        React.createElement("div", {class: "indent2"}), React.createElement("span", {class: "light"}, "."), React.createElement("span", {class: "solid"}, "sort"), React.createElement("span", {class: "light"}, "("), React.createElement("span", {class: "light"}, "|"), "a", React.createElement("span", {class: "light"}, ","), " b", React.createElement("span", {class: "light"}, "|"), " b ", React.createElement("span", {class: "light"}, "-"), " a", React.createElement("span", {class: "light"}, ")"), React.createElement("br", null), 
-                        React.createElement("div", {class: "indent2"}), React.createElement("span", {class: "light"}, "."), React.createElement("span", {class: "solid"}, "collect()"), React.createElement("br", null), 
-                        React.createElement("br", null), 
-                        React.createElement("div", {class: "line"}), 
-                        React.createElement("div", {class: "indent"}), React.createElement("span", {class: "type"}, "let"), " largest ", React.createElement("span", {class: "light"}, "="), " result", React.createElement("br", null), 
-                        React.createElement("div", {class: "indent2"}), React.createElement("span", {class: "light"}, "."), React.createElement("span", {class: "solid"}, "get"), React.createElement("span", {class: "light"}, "("), React.createElement("span", {class: "literal"}, "0"), React.createElement("span", {class: "light"}, ")"), React.createElement("br", null), 
-                        React.createElement("div", {class: "indent2"}), React.createElement("span", {class: "light"}, "."), React.createElement("span", {class: "solid"}, "unwrap"), React.createElement("span", {class: "light"}, "()"), React.createElement("br", null), 
-                        React.createElement("br", null), 
-                        React.createElement("div", {class: "line"}), 
-                        React.createElement("div", {class: "indent"}), React.createElement("span", {class: "solid"}, "println"), React.createElement("span", {class: "light"}, "("), React.createElement("span", {class: "light"}, "$"), React.createElement("span", {class: "string"}, "\"value: "), React.createElement("span", {class: "literal"}, "{largest}"), React.createElement("span", {class: "string"}, "\""), React.createElement("span", {class: "light"}, ")"), React.createElement("br", null), 
-                    React.createElement("span", {class: "light"}, "}")
+                    React.createElement(Type, null, "void"), " main", React.createElement(Light, null, "() {"), React.createElement("br", null), 
+                        React.createElement(Indent, null), React.createElement(Type, null, "let"), " input ", React.createElement(Light, null, "="), " ", React.createElement(Light, null, "["), React.createElement(String, null, "\"one\""), React.createElement(Light, null, ","), " ", React.createElement(String, null, "\"12\""), React.createElement(Light, null, ","), " ", React.createElement(String, null, "\"hello\""), React.createElement(Light, null, ","), " ", React.createElement(String, null, "\"-7\""), React.createElement(Light, null, "]"), React.createElement("br", null), 
+                        React.createElement(Line, null), 
+                        React.createElement(Indent, null), React.createElement(Type, null, "let"), " result ", React.createElement(Light, null, "="), " input", React.createElement("br", null), 
+                        React.createElement(DoubleIndent, null), React.createElement(Light, null, "."), React.createElement(Solid, null, "stream"), React.createElement(Light, null, "()"), React.createElement("br", null), 
+                        React.createElement(DoubleIndent, null), React.createElement(Light, null, "."), React.createElement(Solid, null, "filterMap"), React.createElement(Light, null, "("), React.createElement(Type, null, "int"), React.createElement(Light, null, "::"), "parse", React.createElement(Light, null, ")"), React.createElement("br", null), 
+                        React.createElement(DoubleIndent, null), React.createElement(Light, null, "."), React.createElement(Solid, null, "sort"), React.createElement(Light, null, "("), React.createElement(Light, null, "|"), "a", React.createElement(Light, null, ","), " b", React.createElement(Light, null, "|"), " b ", React.createElement(Light, null, "-"), " a", React.createElement(Light, null, ")"), React.createElement("br", null), 
+                        React.createElement(DoubleIndent, null), React.createElement(Light, null, "."), React.createElement(Solid, null, "collect"), React.createElement(Light, null, "()"), React.createElement("br", null), 
+                        React.createElement(Line, null), 
+                        React.createElement(Indent, null), React.createElement(Type, null, "let"), " largest ", React.createElement(Light, null, "="), " result", React.createElement("br", null), 
+                        React.createElement(DoubleIndent, null), React.createElement(Light, null, "."), React.createElement(Solid, null, "get"), React.createElement(Light, null, "("), React.createElement(Literal, null, "0"), React.createElement(Light, null, ")"), React.createElement("br", null), 
+                        React.createElement(DoubleIndent, null), React.createElement(Light, null, "."), React.createElement(Solid, null, "unwrap"), React.createElement(Light, null, "()"), React.createElement("br", null), 
+                        React.createElement(Line, null), 
+                        React.createElement(Indent, null), React.createElement(Solid, null, "println"), React.createElement(Light, null, "($"), React.createElement(String, null, "\"value: "), React.createElement(Literal, null, "{largest}"), React.createElement(String, null, "\""), React.createElement(Light, null, ")"), React.createElement("br", null), 
+                    React.createElement(Light, null, "}")
                 )
             )
         )
@@ -161,6 +166,28 @@ const Nav = () => {
                 React.createElement("a", {href: "https://github.com/voidlang/void", target: "_blank", class: "link"}, "Docs"), 
                 React.createElement("a", {href: "https://github.com/voidlang/void", target: "_blank", class: "link"}, "GitHub"), 
                 React.createElement("a", {href: "https://github.com/voidlang/void", target: "_blank", class: "button"}, "Try It")
+            )
+        )
+    )
+}
+
+const Quote = () => {
+    return (
+        React.createElement("div", {class: "quote"}, 
+            React.createElement("div", {class: "wrapper"}, 
+                React.createElement("div", {class: "content"}, 
+                    React.createElement("div", {class: "left icon"}, 
+                        React.createElement("i", {class: "fas fa-quote-left"})
+                    ), 
+                    React.createElement("p", {class: "text"}, 
+                        "Any fool can write code that a computer can understand.", React.createElement("br", null), 
+                        "Good programmers write code that humans can understand."
+                    ), 
+                    React.createElement("div", {class: "right icon"}, 
+                        React.createElement("i", {class: "fas fa-quote-right"})
+                    )
+                ), 
+                React.createElement("p", {class: "author"}, React.createElement("span", null, "__"), " Martin Flower")
             )
         )
     )

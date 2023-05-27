@@ -565,3 +565,49 @@ br {
     color: #767679;
     padding: 20px;
 }
+
+
+
+.quote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.quote p {
+    color: #767679;
+}
+
+.quote i {
+    color: #767679;
+}
+
+.quote .icon {
+    display: flex;
+    justify-content: center;
+}
+
+.quote .right {
+    align-items: flex-end;
+}
+
+.quote .content {
+    display: flex;
+}
+
+.quote .content .text {
+    padding: 20px;
+}
+
+.quote .author {
+    text-align: right;
+    padding: 10px;
+    font-style: italic;
+}
+
+.quote .author span {
+    transform: translateY(-7px) !important;
+    margin-right: 3px;
+    display: inline-block;
+}

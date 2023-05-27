@@ -1,3 +1,19 @@
+const Type = (x) => <span class="type">{x}</span>;
+
+const String = (x) => <span class="string">{x}</span>;
+
+const Light = (x) => <span class="light">{x}</span>;
+
+const Solid = (x) => <span class="solid">{x}</span>;
+
+const Literal = (x) => <span class="literal">{x}</span>;
+
+const Indent = () => <div class="indent"/>;
+
+const DoubleIndent = () => <div class="indent2"/>;
+
+const Line = () => <div class="line"/>;
+
 const GetStarted = () => {
     return (
         <div class="get-started">
@@ -12,24 +28,21 @@ const GetStarted = () => {
                     </div>
                 </div>
                 <div class="code">
-                    <span class="type">void</span> main<span class="light">() &#123;</span><br/>
-                        <div class="indent"/><span class="type">let</span> input <span class="light">=</span> <span class="light">[</span><span class="string">"one"</span><span class="light">,</span> <span class="string">"12"</span><span class="light">,</span> <span class="string">"hello"</span><span class="light">,</span> <span class="string">"-7"</span><span class="light">]</span><br/>
-                        <br/>
-                        <div class="line"/>
-                        <div class="indent"/><span class="type">let</span> result <span class="light">=</span> input<br/>
-                        <div class="indent2"/><span class="light">.</span><span class="solid">stream</span><span class="light">()</span><br/>
-                        <div class="indent2"/><span class="light">.</span><span class="solid">filterMap</span><span class="light">(</span><span class="type">int</span><span class="light">::</span>parse<span class="light">)</span><br/>
-                        <div class="indent2"/><span class="light">.</span><span class="solid">sort</span><span class="light">(</span><span class="light">|</span>a<span class="light">,</span> b<span class="light">|</span> b <span class="light">-</span> a<span class="light">)</span><br/>
-                        <div class="indent2"/><span class="light">.</span><span class="solid">collect()</span><br/>
-                        <br/>
-                        <div class="line"/>
-                        <div class="indent"/><span class="type">let</span> largest <span class="light">=</span> result<br/>
-                        <div class="indent2"/><span class="light">.</span><span class="solid">get</span><span class="light">(</span><span class="literal">0</span><span class="light">)</span><br/>
-                        <div class="indent2"/><span class="light">.</span><span class="solid">unwrap</span><span class="light">()</span><br/>
-                        <br/>
-                        <div class="line"/>
-                        <div class="indent"/><span class="solid">println</span><span class="light">(</span><span class="light">$</span><span class="string">"value: </span><span class="literal">&#123;largest&#125;</span><span class="string">"</span><span class="light">)</span><br/>
-                    <span class="light">&#125;</span>
+                    <Type>void</Type> main<Light>() &#123;</Light><br/>
+                        <Indent/><Type>let</Type> input <Light>=</Light> <Light>[</Light><String>"one"</String><Light>,</Light> <String>"12"</String><Light>,</Light> <String>"hello"</String><Light>,</Light> <String>"-7"</String><Light>]</Light><br/>
+                        <Line/>
+                        <Indent/><Type>let</Type> result <Light>=</Light> input<br/>
+                        <DoubleIndent/><Light>.</Light><Solid>stream</Solid><Light>()</Light><br/>
+                        <DoubleIndent/><Light>.</Light><Solid>filterMap</Solid><Light>(</Light><Type>int</Type><Light>::</Light>parse<Light>)</Light><br/>
+                        <DoubleIndent/><Light>.</Light><Solid>sort</Solid><Light>(</Light><Light>|</Light>a<Light>,</Light> b<Light>|</Light> b <Light>-</Light> a<Light>)</Light><br/>
+                        <DoubleIndent/><Light>.</Light><Solid>collect</Solid><Light>()</Light><br/>
+                        <Line/>
+                        <Indent/><Type>let</Type> largest <Light>=</Light> result<br/>
+                        <DoubleIndent/><Light>.</Light><Solid>get</Solid><Light>(</Light><Literal>0</Literal><Light>)</Light><br/>
+                        <DoubleIndent/><Light>.</Light><Solid>unwrap</Solid><Light>()</Light><br/>
+                        <Line/>
+                        <Indent/><Solid>println</Solid><Light>($</Light><String>"value: </String><Literal>&#123;largest&#125;</Literal><String>"</String><Light>)</Light><br/>
+                    <Light>&#125;</Light>
                 </div>
             </div>
         </div>
