@@ -2,6 +2,7 @@ package org.voidlang.web;
 
 
 import net.voidhttp.HttpServer;
+import net.voidhttp.util.Handlers;
 import net.voidhttp.util.console.Logger;
 
 public enum VoidWeb {
@@ -18,6 +19,10 @@ public enum VoidWeb {
     }
 
     private void loadRoutes() {
+        server.use(Handlers.staticFolder("./frontend/public", "/public", true));
 
+        server.get("/", (req, res) -> {
+            res.render("index");
+        });
     }
 }
