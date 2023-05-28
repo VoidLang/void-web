@@ -60,7 +60,7 @@ const GetStarted = () => {
     return (
         React.createElement("div", {class: "get-started"}, 
             React.createElement("h1", null, React.createElement("span", {style: "color: lime"}, "Modern"), " Software Development"), 
-            React.createElement("h2", null, "Made It ", React.createElement("span", {style: "color: lime"}, "Simple")), 
+            React.createElement("h2", null, "Made ", React.createElement("span", {style: "color: lime"}, "Simple")), 
             React.createElement("div", {class: "wrapper"}, 
                 React.createElement("div", {class: "info"}, 
                     React.createElement("div", {class: "inner"}, 
@@ -137,24 +137,29 @@ function startTyping() {
     setTimeout(startTyping, typeTime + waitTime)
 }
 window.addEventListener('load', () => {
+    if (!feature.handle())
+        return
     startTyping()
 })
-const Main = () => (
-    React.createElement("div", null, 
-        React.createElement("div", {class: "main"}, 
-            React.createElement("div", {class: "wrapper"}, 
-                React.createElement("h1", null, "Time To Code ", feature), 
-                React.createElement("p", null, "Explore the powerful features of Void")
-            )
-        ), 
-        React.createElement("div", {class: "more"}, 
-            React.createElement("a", {class: "arrows", href: "#showcase"}, 
-                React.createElement("span", {class: "arrow"}, "."), 
-                React.createElement("span", {class: "arrow"}, ".")
+let started = false
+const Main = () =>  {
+    return (
+        React.createElement("div", null, 
+            React.createElement("div", {class: "main"}, 
+                React.createElement("div", {class: "wrapper"}, 
+                    React.createElement("h1", null, "Time To Code ", feature), 
+                    React.createElement("p", null, "Explore the powerful features of Void")
+                )
+            ), 
+            React.createElement("div", {class: "more"}, 
+                React.createElement("a", {class: "arrows", href: "#showcase"}, 
+                    React.createElement("span", {class: "arrow"}, "."), 
+                    React.createElement("span", {class: "arrow"}, ".")
+                )
             )
         )
-    )
-);
+    );
+}
 
 const Nav = () => {
     return (
@@ -229,6 +234,16 @@ const Showcase = () => {
     )
 }
 
+page = () => (
+    React.createElement("div", {class: "not-found"}, 
+        React.createElement("div", {class: "wrapper"}, 
+            React.createElement("h1", {class: "button"}, "Error 404"), 
+            React.createElement("p", null, "This page could not be found")
+        )
+    )
+)
+
+app.register('404', page);
 page = () => (
     React.createElement("div", null, 
         React.createElement(Nav, null), 

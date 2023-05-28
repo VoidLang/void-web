@@ -18,7 +18,7 @@ const GetStarted = () => {
     return (
         <div class="get-started">
             <h1><span style="color: lime">Modern</span> Software Development</h1>
-            <h2>Made It <span style="color: lime">Simple</span></h2>
+            <h2>Made <span style="color: lime">Simple</span></h2>
             <div class="wrapper">
                 <div class="info">
                     <div class="inner">

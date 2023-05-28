@@ -56,22 +56,29 @@ function startTyping() {
 }
 
 window.addEventListener('load', () => {
+    if (!feature.handle())
+        return
     startTyping()
 })
 
-const Main = () => (
-    <div>
-        <div class="main">
-            <div class="wrapper">
-                <h1>Time To Code {feature}</h1>
-                <p>Explore the powerful features of Void</p>
+let started = false
+
+const Main = () =>  {
+    return (
+        <div>
+            <div class="main">
+                <div class="wrapper">
+                    <h1>Time To Code {feature}</h1>
+                    <p>Explore the powerful features of Void</p>
+                </div>
+            </div>
+            <div class="more">
+                <a class="arrows" href="#showcase">
+                    <span class="arrow">.</span>
+                    <span class="arrow">.</span>
+                </a>
             </div>
         </div>
-        <div class="more">
-            <a class="arrows" href="#showcase">
-                <span class="arrow">.</span>
-                <span class="arrow">.</span>
-            </a>
-        </div>
-    </div>
-);
+    );
+}
+
