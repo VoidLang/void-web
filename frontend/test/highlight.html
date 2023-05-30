@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #code {
+            color: #9a9ea7;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 18px;
+            font-weight: 600;
+            white-space: pre;
+            line-height: 20px;
+        }
+
+        .default { color: #9a9ea7 }
+        .keyword { color: #7f7aa6 }
+        .operator { color: #78a4b5 }
+        .string { color: #98c379 }
+        .literal { color: #c6c5c4 }
+        .error { color: #a83232 }
+        .method { color: #6a8cc0 }
+        .type { color: #e1c46c }
+    </style>
+</head>
+<body>
+    <div id="code"></div>
+</body>
+<script src="../public/highlighter.js"></script>
+</html>
