@@ -1,21 +1,23 @@
 class TokenType {
-    static Number     = 0
-    static Boolean    = 1
-    static String     = 2
-    static Character  = 3
-    static Identifier = 4
-    static Null       = 5
-    static Type       = 6
-    static Expression = 7
-    static Modifier   = 8
-    static Operator   = 9
-    static Separator  = 10
-    static Annotation = 11
-    static Info       = 12
-    static Whitespace = 13
-    static Finish     = 14
-    static Unexpected = 15
-    static None       = 16
+    static Number       = 0
+    static Boolean      = 1
+    static String       = 2
+    static Character    = 3
+    static Identifier   = 4
+    static Null         = 5
+    static Type         = 6
+    static Expression   = 7
+    static Modifier     = 8
+    static Operator     = 9
+    static Separator    = 10
+    static Annotation   = 11
+    static Info         = 12
+    static Whitespace   = 13
+    static Comment      = 14
+    static CommentBlock = 15
+    static Finish       = 16
+    static Unexpected   = 17
+    static None         = 18
 }
 
 const NAMES = [
@@ -33,6 +35,8 @@ const NAMES = [
     'Annotation',
     'Info',
     'Whitespace',
+    'Comment',
+    'CommentBlock',
     'Finish',
     'Unexpected',
     'None'
@@ -403,7 +407,30 @@ class Tokenizer {
     }
 
     nextOperator() {
+        if (this.peek() == '/') {
+            if (this.at(this.cursor + 1) == '/') 
+                return this.nextCommentLine()
+            else if (this.at(this.cursor + 1) == '*')
+                return this.nextCommentBlock()
+        }
         return Token.of(TokenType.Operator, this.get())
+    }
+
+    nextCommentLine() {
+        this.skip(2)
+        const begin = this.cursor
+        while (this.peek() != '\n')
+            this.get()
+        return Token.of(TokenType.Comment, '//' + this.range(begin, this.cursor))
+    }
+
+    nextCommentBlock() {
+        const begin = this.cursor
+        this.skip(2)
+        while (this.peek() != '*' || this.at(this.cursor + 1) != '/') 
+            this.get()
+        this.skip(2)
+        return Token.of(TokenType.CommentBlock, this.range(begin, this.cursor))
     }
 
     nextSeparator() {
@@ -512,27 +539,30 @@ class Style {
     static Method     = '#6a8cc0'
     static Type       = '#e1c46c'
     static Error      = '#a83232'
+    static Comment    = '#545454'
     static None       = 'transparent'
 }
 
 const STYLES = {
-    Number:     'literal',
-    Boolean:    'literal',
-    String:     'string',
-    Character:  'string',
-    Identifier: 'default',
-    Null:       'literal',
-    Type:       'keyword',
-    Expression: 'keyword',
-    Modifier:   'keyword',
-    Operator:   'operator',
-    Separator:  'operator',
-    Annotation: 'keyword',
-    Info:       'keyword',
-    Whitespace: 'none',
-    Finish:     'none',
-    Unexpected: 'none',
-    Method:     'method',
+    Number:       'literal',
+    Boolean:      'literal',
+    String:       'string',
+    Character:    'string',
+    Identifier:   'default',
+    Null:         'literal',
+    Type:         'keyword',
+    Expression:   'keyword',
+    Modifier:     'keyword',
+    Operator:     'operator',
+    Separator:    'operator',
+    Annotation:   'keyword',
+    Info:         'keyword',
+    Whitespace:   'none',
+    Finish:       'none',
+    Unexpected:   'none',
+    Method:       'method',
+    Comment:      'comment',
+    CommentBlock: 'comment'
 }
 
 class Prettier {
@@ -612,9 +642,19 @@ let source = `void main() {
         .unwrap()
 
     println("Hello, World!")
-
     println($"value: {largest}")
 }`
+
+source = `
+let x = 100
+// this is fancy
+let y = 100
+/**
+ * anyad
+ * faszat
+ */
+println("oke")
+`
 
 const code = document.getElementById('code')
 
