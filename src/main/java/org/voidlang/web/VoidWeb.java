@@ -24,5 +24,9 @@ public enum VoidWeb {
         server.get("/", (req, res) -> {
             res.render("index");
         });
+
+        server.error(404, (req, res) -> {
+            res.render("404");
+        });
     }
 }

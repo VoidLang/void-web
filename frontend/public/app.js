@@ -1,16 +1,5 @@
 let app = new App(document.getElementById('root'));
 let page = null;
-const Button = (text, pro, ski) => {
-    console.log(text)
-    console.log(pro)
-    console.log(ski)
-    return (
-        React.createElement("div", {class: "button"}, 
-            text
-        )
-    )
-}
-
 const Contact = () => {
     return (
         React.createElement("div", {class: "contact"}, 
@@ -244,6 +233,269 @@ page = () => (
 )
 
 app.register('404', page);
+page = () => (
+    React.createElement("div", null, 
+        React.createElement(Nav, null), 
+        React.createElement("div", {class: "docs"}, 
+            React.createElement("div", {class: "sidebar"}, 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "1. "), "Introduction")
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "2. "), "Getting started"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "2.1. "), "Installation")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "2.2. "), "Hello World")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "3. "), "Void basics"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "3.1. "), "Variables")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "3.2. "), "Primitive types")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "3.3. "), "Methods")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "3.4. "), "Comments")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "4. "), "Control flow"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "4.1. "), "If statements")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "4.2. "), "For loops")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "4.3. "), "While loops")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "4.4. "), "Switch blocks")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "5. "), "Custom types"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "5.1. "), "Tuples")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "5.2. "), "Classes")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "5.3. "), "Structs")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "5.4. "), "Interfaces")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "5.5. "), "Enums")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "6. "), "More on methods"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "6.1. "), "Multi-returns")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "6.2. "), "Pre-processing")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "6.3. "), "Post-processing")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "6. "), "Data handling"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "6.1. "), "Lists")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "6.2. "), "Streams")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "6.3. "), "Maps")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "6.4. "), "Option")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "6.5. "), "Result")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "7. "), "Lambda functions"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "7.1. "), "Local lambdas")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "7.2. "), "Lambda parameters")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "8. "), "Generics"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "8.1. "), "Generic declaration")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "8.2. "), "Generic usage")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "8.3. "), "Default generics")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "9. "), "Naming conventions"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "9.1. "), "Variables and methods")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "9.2. "), "Types")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "9.3. "), "Constants")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "10. "), "File handling"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "10.1. "), "Simple file operations")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "10.2. "), "File streaming")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "10.3. "), "Json deserialization")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "11. "), "Multithreading"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "11.1. "), "Threads")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "11.2. "), "Async functions")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "11.3. "), "Mutex locks")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "12. "), "Networking"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "12.1. "), "Sockets")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "12.2. "), "WebSockets")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "12.3. "), "HTTP requests")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "12.4. "), "HTTP servers")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "13. "), "Json parsing"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "13.1. "), "JSON in code")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "13.2. "), "Json serialization")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "13.3. "), "Json deserialization")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "14. "), "Math"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "14.1. "), "Math functions")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "14.2. "), "Vectors")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "14.3. "), "Matrices")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "15. "), "Reflection API"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "15.1. "), "Fetching types")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "15.2. "), "Fields and methods")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "15.3. "), "Dynamic code loading")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "16. "), "Instrumentation API"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "16.1. "), "Agent attaching")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "16.2. "), "Overriding definitions")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "17. "), "HTML parsing"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "17.1. "), "HTML in code")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "17.2. "), "Custom HTML parsing")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "18. "), "Handling natives"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "18.1. "), "Linking native methods")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "18.2. "), "Dynamic native linking")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "19. "), "Void Bytecode"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "19.1. "), "Bytecode in code")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "19.2. "), "Instructions")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "19.3. "), "Bytecode examples")
+                    )
+                ), 
+                React.createElement("div", {class: "category"}, 
+                    React.createElement("h1", null, React.createElement("strong", null, "20. "), "About Void"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "20.1. "), "License")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "20.2. "), "Contributing")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", null, React.createElement("strong", null, "20.3. "), "Credits")
+                    )
+                )
+            ), 
+            React.createElement("div", {class: "content"}, 
+                "def"
+            )
+        )
+    )
+)
+
+app.register('docs', page);
 page = () => (
     React.createElement("div", null, 
         React.createElement(Nav, null), 
