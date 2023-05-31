@@ -91,8 +91,11 @@ class Component {
         if (element == null)
             return;
         // register the component listeners
-        if (this.attributes.onclick != null) {
-            element.addEventListener('click', this.attributes.onclick);
+        for (const key in this.attributes) {
+            if (!key.startsWith('on'))
+                continue
+            const event = key.substring(2).toLowerCase()
+            element.addEventListener(event, () => this.attributes[key](this));
         }
     }
 

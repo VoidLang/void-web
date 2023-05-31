@@ -645,17 +645,6 @@ let source = `void main() {
     println($"value: {largest}")
 }`
 
-source = `
-let x = 100
-// this is fancy
-let y = 100
-/**
- * anyad
- * faszat
- */
-println("oke")
-`
-
 const code = document.getElementById('code')
 
 const tokenizer = new Tokenizer(source)

@@ -638,17 +638,24 @@ br {
     font-size: 20px;
 }
 
-
-
 .docs {
     background: red;
     display: flex;
     height: calc(100vh - 80px);
+    overflow-y: scroll;
 }
 
+.docs::-webkit-scrollbar {
+    height: 0;
+}       
+
 .sidebar {
+    background: #1a1826;
     background: #242236;
+    background: #1d1f21;
+    background: #1e222f;
     width: 300px;
+    min-width: 300px;
     padding: 20px 0;
     overflow: auto;
     scrollbar-color: #000000 #ffffff; 
@@ -681,19 +688,102 @@ br {
     padding: 5px 0;
     transition: 0.2s;
     cursor: pointer;
+    color: #dbdbdd;
 }
 
 .sidebar .category h1:hover, .sidebar .category h2:hover {
-    color: lime;
+    color: #8abeb7;
+}
+
+.sidebar .category .active {
+    color: #8abeb7;
 }
 
 .sidebar .category h2 {
     padding-left: 20px;
 }
 
-.content {
+.docs .content {
     background: #1e222f;
     width: calc(100% - 300px);
+    min-width: 300px;
     padding: 20px;
+    overflow-y: auto;
 }
 
+@media (max-width: 800px) {
+    .docs .content {
+        min-width: calc(100vw);
+    }
+    ::-webkit-scrollbar {
+        width: 0px !important;
+    }    
+}
+
+.docs .content .wrapper {
+    max-width: 800px;
+    margin: auto;
+}
+
+.docs .content p {
+    word-wrap: break-word;
+    font-size: 18px;
+    color: #bcbdd0;
+    padding-bottom: 20px;
+}
+
+.docs .content h2 {
+    padding-bottom: 20px;
+    color: #bcbdd0;
+    cursor: pointer;
+}
+
+.docs .content h3 {
+    padding-bottom: 20px;
+    color: #bcbdd0;
+    cursor: pointer;
+    font-size: 1.3em;
+}
+
+
+.docs .content a {
+    padding-bottom: 20px;
+    color: #8abeb7;
+    box-sizing: border-box;
+    display: block;
+}
+
+.docs .content .backticks {
+    background: #1d1f21;
+    color: #c5c8c6;
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    font-size: 80%;
+}
+
+.docs .content .code {
+    color: #9a9ea7;
+    font-family: 'Ubuntu Mono', monospace;
+    white-space: pre;
+    line-height: 20px;
+}
+
+.docs .content .block {
+    background: #1d1f21;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.docs .content .terminal {
+    color: #c5c8c6;
+}
+
+.docs .content .light {
+    color: #bcbdd0;
+}
+
+.space {
+    height: 100vh;
+}
