@@ -115,7 +115,7 @@ int balance = database
 string balanceStr = $"{balance} USD"
     
 // also bad code
-string balance = String.from(
+string balance = string.from(
     database
         .getUser("username")
         .getBalance()
@@ -134,7 +134,7 @@ let balance = database
     .getBalance()
     
 // secondly, via redeclaration, the type is now string
-let balance = "{balance} USD"`
+let balance = $"{balance} USD"`
             )}
         </Code>
 

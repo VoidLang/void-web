@@ -248,8 +248,7 @@ void main() {
         </Code>
         <Code>
             {highlight(
-`
-void drawPoint(Point point) {
+`void drawPoint(Point point) {
     println($"x: {y}, y: {y}")
 }
     
@@ -349,15 +348,15 @@ struct Point {
         <Code>
             {highlight(
 `class Entity {
-    public:
-        int posX, posY
-        
-        int entityId
+public:
+    int posX, posY
     
-    private:
-        float health
-        
-        float stamina
+    int entityId
+    
+private:
+    int health
+    
+    float stamina
 }`
             )}
         </Code>
@@ -879,8 +878,10 @@ println($"Welcome, {user.name}")`
     return magic
 }
     
-// the value of "test" will be 100
-let test = getSomeMagicValue()`
+main() {
+    // the value of "test" will be 100
+    let test = getSomeMagicValue()
+}`
             )}
         </Code>
         
