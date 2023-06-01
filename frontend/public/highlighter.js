@@ -275,6 +275,7 @@ class Tokenizer {
         switch (token) {
             case "new":
             case "class":
+            case "enum":
             case "struct":
             case "interface":
             case "for":
@@ -292,6 +293,7 @@ class Tokenizer {
             case "await":
             case "goto":
             case "is":
+            case "in":
             case "as":
             case "where":
             case "defer":
@@ -306,11 +308,17 @@ class Tokenizer {
         switch (token) {
             case "let":
             case "byte":
+            case "ubyte":
             case "short":
+            case "ushort":
             case "int":
+            case "uint":
             case "double":
+            case "udouble":
             case "float":
+            case "ufloat":
             case "long":
+            case "ulong":
             case "void":
             case "bool":
             case "char":
@@ -419,8 +427,10 @@ class Tokenizer {
     nextCommentLine() {
         this.skip(2)
         const begin = this.cursor
-        while (this.peek() != '\n')
-            this.get()
+        while (this.peek() != '\n') {
+            if (this.get() == '\0') 
+                break
+        }
         return Token.of(TokenType.Comment, '//' + this.range(begin, this.cursor))
     }
 
@@ -450,6 +460,9 @@ class Tokenizer {
 
         while (this.isNumberContent(this.peek())) {
             if (this.peek() == '.') {
+                if (this.at(this.cursor + 1) == '.') {
+                    return Token.of(TokenType.Number, this.range(begin, this.cursor))
+                }
                 if (!integer)
                     return Token.of(TokenType.Unexpected, 'Floating point number cannot have multiple dot symbols.')
                 integer = false
@@ -461,7 +474,7 @@ class Tokenizer {
                     return Token.of(TokenType.Unexpected, 'Non-decimal number cannot have a floating-point value.');
                 
                 this.skip(1)
-                return Token.of(TokenType.Number, this.range(begin, this.cursor - 1))
+                return Token.of(TokenType.Number, this.range(begin, this.cursor))
             }
 
             this.skip(1)
@@ -526,7 +539,7 @@ class Tokenizer {
     }
 
     nextAnnotation() {
-        return Token.of(TokenType.Annotation)
+        return Token.of(TokenType.Annotation, this.get() + this.nextIdentifier().value)
     }
 }
 
@@ -588,7 +601,8 @@ class Prettier {
             let style = STYLES[token.getName()]
 
             if (token.type == TokenType.Identifier) {
-                if (this.peek().eq(TokenType.Separator, '(')) 
+                if (this.peek().eq(TokenType.Separator, '(') || (this.peek().eq(TokenType.Operator, '<') 
+                        && token.value.charAt(0) == token.value.charAt(0).toLowerCase())) 
                     style = STYLES.Method
                 else {
                     const normal = token.value.charAt(0)

@@ -225,35 +225,6 @@ const Showcase = () => {
     )
 }
 
-const Introduction = () => (
-    React.createElement("div", null, 
-        React.createElement("h2", null, "What is Void?"), 
-        React.createElement("p", null, 
-            "Void is a virtual-machine-based programing language designed for developers to be able to create clean," + " " + 
-            "fast and stable multi-platform applications." + " " +
-            "It has has a relatively easy syntax, that follows most of the already existing code conventions." + " " +
-            "Void features many utilities that enchant the experience of coding, such as object destruction," + " " + 
-            "variable redeclaration, multi-returning, and much more."
-        ), 
-        React.createElement("h2", null, "Why Void?"), 
-        React.createElement("p", null, 
-            "Void compiles to bytecode, therefore it allows the application with the same exact code," + " " + 
-            "to be ran on all platforms, whilst forward and backward compatibility is guaranteed." + " " + 
-            "It has many built-in designs, which makes it much easier to develop enterprise-grade applications."
-        ), 
-        React.createElement("h2", null, "How to use Void?"), 
-        React.createElement("p", null, 
-            "Void is designed to satisfy the needs of multiple development paradigms." + " " + 
-            "Unlike many production-oriented languages, Void does not force object-oriented programming on you," + " " + 
-            "however it is recommended to use in most cases."
-        ), 
-        React.createElement("h2", null, "Want to know more?"), 
-        React.createElement("a", {href: "https://discord.com/invite/HdgnHqqGAW", target: "_blank"}, "Join the discord server"), 
-        React.createElement("h2", null, "Want to help the project?"), 
-        React.createElement("a", {href: "https://paypal.me/voidlang", target: "_blank"}, "Donate to the Void Project")
-    )
-)
-
 const Backticks = (x) => React.createElement("span", {class: "backticks code"}, x)
 const Terminal = (x) => React.createElement("div", {class: "code block terminal"}, x)
 const Code = (x) => React.createElement("div", {class: "code block terminal"}, x)
@@ -359,6 +330,982 @@ const Installation = () => (
     React.createElement("div", null, 
         React.createElement("h2", null, "Installation"), 
         React.createElement("p", null, "This page is yet to be implemented.")
+    )
+)
+
+const Foreword = () => (
+    React.createElement("div", null, 
+        React.createElement("h2", null, "Foreword"), 
+        React.createElement("p", null, "This page is yet to be implemented.")
+    )
+)
+
+const Introduction = () => (
+    React.createElement("div", null, 
+        React.createElement("h2", null, "What is Void?"), 
+        React.createElement("p", null, 
+            "Void is a virtual-machine-based programing language designed for developers to be able to create clean," + " " + 
+            "fast and stable multi-platform applications." + " " +
+            "It has has a relatively easy syntax, that follows most of the already existing code conventions." + " " +
+            "Void features many utilities that enchant the experience of coding, such as object destruction," + " " + 
+            "variable redeclaration, multi-returning, and much more."
+        ), 
+        React.createElement("h2", null, "Why Void?"), 
+        React.createElement("p", null, 
+            "Void compiles to bytecode, therefore it allows the application with the same exact code," + " " + 
+            "to be ran on all platforms, whilst forward and backward compatibility is guaranteed." + " " + 
+            "It has many built-in designs, which makes it much easier to develop enterprise-grade applications."
+        ), 
+        React.createElement("h2", null, "How to use Void?"), 
+        React.createElement("p", null, 
+            "Void is designed to satisfy the needs of multiple development paradigms." + " " + 
+            "Unlike many production-oriented languages, Void does not force object-oriented programming on you," + " " + 
+            "however it is recommended to use in most cases."
+        ), 
+        React.createElement("h2", null, "Want to know more?"), 
+        React.createElement("a", {href: "https://discord.com/invite/HdgnHqqGAW", target: "_blank"}, "Join the discord server"), 
+        React.createElement("h2", null, "Want to help the project?"), 
+        React.createElement("a", {href: "https://paypal.me/voidlang", target: "_blank"}, "Donate to the Void Project")
+    )
+)
+
+const DocsShowcase = () => (
+    React.createElement("div", null, 
+        React.createElement("h2", null, "Showcase"), 
+        React.createElement("p", null, 
+            "Below are few examples showcasing what Void provides to enchant programming experience."
+        ), 
+        React.createElement("h3", null, "A Hello World application"), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    println("Hello, World!")
+}`
+            )
+        ), 
+        React.createElement("h3", null, "Variable declaration"), 
+        React.createElement("p", null, 
+            "Below are few examples showcasing what Void provides to enchant programming experience."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let value = 100`
+            )
+        ), 
+        React.createElement("p", null, 
+            "In case of explicit type definition:"
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`float value = 3.5`
+            )
+        ), 
+        React.createElement("p", null, 
+            "As you may notice, semicolons are not required." + " " + 
+            "The compiler automatically places them after the end of lines, when it is required." + " " + 
+            "This allows the chaining syntax, unlike many in case of many languages."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`database
+    .fetchUser("username")
+    .transform(User::from)
+    .getOrThrow(err)`
+            )
+        ), 
+        React.createElement("p", null, 
+            "In case of putting multiple statements in one line," + " " + 
+            "you can separate them with putting a semicolon between them."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`int f = 0; float f = 10.0`
+            )
+        ), 
+        React.createElement("h3", null, "Variable redeclaration"), 
+        React.createElement("p", null, 
+            "Normally languages doesn't let you declare variables twice," + " " + 
+            "but as for some other languages such as Void, lets you to do that."
+        ), 
+        React.createElement("p", null, 
+            "This is becuase in many cases you need to swap between variable types for a value," + " " + 
+            "and having too much variables for a single value," + " " + 
+            "or having long lines of type conversion is both considered a bad practice."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// bad code
+int balance = database
+    .getUser("username")
+    .getBalance()
+string balanceStr = $"{balance} USD"
+    
+// also bad code
+string balance = string.from(
+    database
+        .getUser("username")
+        .getBalance()
+) + " USD"`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// initially, the type of \`balance\` is an integer
+let balance = database
+    .getUser("username")
+    .getBalance()
+    
+// secondly, via redeclaration, the type is now string
+let balance = $"{balance} USD"`
+            )
+        ), 
+        React.createElement("h3", null, "Multi-returning"), 
+        React.createElement("p", null, 
+            "Void lets you have methods return multiple variables at once." + " " +
+            "This allows you to have more simple codes," + " " + 
+            "without the need of making structs holding multiple values for return."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// overcomplicated code
+struct HttpResponse {
+    int code
+    string message
+}
+    
+HttpResponse fetchURL(string url) {
+    return new HttpResponse {
+        code: 404,
+        message: "Not found"
+    }
+}  
+`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// simplified code
+(int, string) fetchURL(string url) {
+    return (404, "Not found")
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "In the last example, a tuple is returned." + " " + 
+            "A tuple can hold values of any length and any type." + " " + 
+            "To access these values you can use a feature called tuple destruction."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let (code, message) = fetchURL("google.com")
+println($"Webserver responded with {code} status code")`
+            )
+        ), 
+        React.createElement("p", null, 
+            "You can also access these values without destructing the tuple." + " " + 
+            "You need to specify the index of the tuple you want to retrieve."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let response = fetchURL("google.com")
+let code = response.0
+let message = response.1`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Void allows you to name tuple members." + " " + 
+            "Member names are specified inside the method return type declaration."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`(bool success, string token) 
+authenticate(string username, string password) {
+    return (true, "Authenticated")
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "In this case, you can access these values by their names."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let result = authenticate("admin", "12345")
+if (result.success) {
+    println("Authenticated")
+    println($"Token: {result.token}")
+} else {
+    println("Invalid credentials")
+}`
+            )
+        ), 
+        React.createElement("h3", null, "Primitive types"), 
+        React.createElement("p", null, 
+            "Void features a wide variety of primitive types."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`byte, short, int, long, float, double,
+bool, char, string`
+            )
+        ), 
+        React.createElement("p", null, 
+            "And their unsigned version."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`ubyte, ushort, uint, ulong, ufloat, udouble`
+            )
+        ), 
+        React.createElement("h3", null, "Simplified number constants"), 
+        React.createElement("p", null, 
+            "You can specify the types of numbers in the number constant."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let byteVal = 30B
+let shortVal = 150S
+let intVal = 540I
+let longVal = 120000L
+let floatVal = 3.5F
+let doubleVal = 40D`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Without type specifier, non-decimal numbers are integers, and decimal numbers are doubles."
+        ), 
+        React.createElement("h3", null, "Class types"), 
+        React.createElement("p", null, 
+            "The most high-level one of types is the class type." + " " +
+            "It has the capatibility of holding methods, implementations, fileds, and much more."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`class Car {
+    string type
+    int speed
+    
+    void move() {
+        println("Moving...")
+    }
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "In case of the need of classes, which are only for the purpose of holding values, you can use structs." + " " +
+            "Structs are simplified classes with the purpose of holding values."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`struct Point {
+    int x
+    int y
+}
+    
+void main() {
+    let point = new Point { x: 2, y: 3 }
+}`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`
+void drawPoint(Point point) {
+    println($"x: {y}, y: {y}")
+}
+    
+main() {
+    // you can use the simplified initializator, 
+    // if Void knows the type of the struct
+    Point point = { x: -7, y: 0}
+    
+    drawPoint({ x: 30, y: 40 })
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "You can create classes which only show you what methods they have," + " " + 
+            "but they don't have an actual implementations."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`interface Car {
+    void move()
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "These methods are implemented by a class."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`class Ferrari : Car {
+    @Override
+    void move() {
+        println("Vrooooom...")
+    }
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "You can have classes with constant members."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`enum MimeType {
+    PLAIN_TEXT("text/plain"),
+    IMAGE("image/png"),
+    VIDEO("video/mp4")
+    
+    string data
+    
+    MimeType(string data) {
+        this.data = data
+    }
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "You can decorate classes, fields, methods or code blocks with annotations."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`@interface Subscribe {
+    string event
+    bool sync = false
+}
+    
+@Subscribe(event = "playerJoin")
+void onPlayerJoin() {
+    println("A player has joined the game.");
+}`
+            )
+        ), 
+        React.createElement("h3", null, "Access modifiers"), 
+        React.createElement("p", null, 
+            "Void features two types of access modifier declarations."
+        ), 
+        React.createElement("p", null, 
+            "You can specify access modifiers separately for each methods and fields." + " " +
+            "However this is not a good practise, as you are making method declarations" + " " + 
+            "much longer by having to put these manually everywhere."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`public static void foo() {
+    println("bar")
+}
+    
+struct Point {
+    public int x, y
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Alternatively, you can use ", React.createElement(Backticks, null, "modifier blocks"), "," + " " + 
+            "which allows you to set the visibility modifiers of a section of code."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`class Entity {
+    public:
+        int posX, posY
+        
+        int entityId
+    
+    private:
+        float health
+        
+        float stamina
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Visibility modifiers are ", React.createElement(Backticks, null, "public"), ", ", React.createElement(Backticks, null, "protected"), " and ", React.createElement(Backticks, null, "private"), "."
+        ), 
+        React.createElement("h3", null, "Object destructuring"), 
+        React.createElement("p", null, 
+            "You can destructure object members in order to make them more accessible in the code."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`struct Point {
+    int x, y
+}`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let point = new Point { x: 10, y: -2 }
+let { x, y } = point
+    
+println($"Point {x}, {y}")
+    
+// you don't have to deconstruct 
+// all the variables of an object
+let { x } = point`
+            )
+        ), 
+        React.createElement("h3", null, "Lambda objects"), 
+        React.createElement("p", null, 
+            "You can create anonymus functions inside the code. These are also known as lambdas."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let foo = |int x| println(x)
+foo(123)`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void bar(|int, int| test) {
+    test(2, 3)
+}
+    
+bar(|x, y| println(x * y))`
+            )
+        ), 
+        React.createElement("h3", null, "Default values"), 
+        React.createElement("p", null, 
+            "Using the ", React.createElement(Backticks, null, "default(Type)"), " function, you can retrieve the default value of the given type."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let number = default(int) // 0
+let state = default(bool) // false
+let car = default(Car) // null`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Void features a system, which allows to create custom default values for your own class types." + " " +
+            "You should put a ", React.createElement(Backticks, null, "default"), " modifier before the class declaration," + " " + 
+            "and a ", React.createElement(Backticks, null, "default()"), " method must be declared as well."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`default class Credentials {
+    string username, password
+    
+    default() {
+        return {
+            username: "admin",
+            password: "12345"
+        }
+    }
+}`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// initialize credentials to the default value 
+let creds = default(Credentials) 
+// { username: "admin", password: "12345" }
+    
+// you can use the default function without an explicit type, 
+// if the variable's type is defined explicitly
+Credentials creds = default 
+    
+// a simplfied syntax is also available
+default Credentials creds`
+            )
+        ), 
+        React.createElement("h3", null, "Null-conditional operators"), 
+        React.createElement("p", null, 
+            "Null-conditional operators provide null-safe access to members." + " " +
+            "A ", React.createElement(Backticks, null, "?"), " mark is placed before the instruction to make it null-conditional."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let profile = database.find("user")
+    
+// the profile's balance is retrieved 
+// if the profile is not null, 
+// otherwise a default value is required
+println(profile?.balance ?? 0)
+    
+// might be null
+let person = getSomePerson() 
+// the "walk" method is not invoked 
+// if "person" is null
+person?.walk()
+    
+// you can use null-conditional operators 
+// on nested members as well
+person?.entity?.motion?.move()`
+            )
+        ), 
+        React.createElement("h3", null, "Static variables"), 
+        React.createElement("p", null, 
+            "By default, variables live only in the scope of a method." + " " + 
+            "Static variables however provide a way to statically store data in the method," + " " +
+            "that is accessible for further method calls."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`int getIncrementId() {
+    static let counter = 0
+    return counter++
+}`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    getIncrementId()
+    getIncrementId()
+    getIncrementId()
+}`
+            )
+        ), 
+        React.createElement(Terminal, null, 
+            React.createElement("pre", null, 
+                "0", React.createElement("br", null), 
+                "1", React.createElement("br", null), 
+                "2"
+            )
+        ), 
+        React.createElement("h3", null, "Enchanted switch"), 
+        React.createElement("p", null, 
+            "In Void you can use the old switch syntax."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`switch (status) {
+    case 200:
+        println("ok")
+        break
+    case 400:
+        println("error")
+        break
+    default:
+        println("unrecognized")
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "However in most cases, this old design forces us to write a lot of unnecessary code," + " " + 
+            "such as always having to write \"break\" after each cases." + " " +
+            "Void's echanted switch allows you to simplify switch blocks and use them as direct expressions."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`enum Status {
+    SUCCESS,
+    FAILED,
+    UNKNOWN
+}`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`switch (code) {
+    200 -> println("success")
+    400 -> println("failed")
+    else -> println("unknown")
+}
+    
+// you can merge cases as well
+switch (status) {
+    FAILED|UNKNOWN -> println("Unable to authenticate")
+    SUCCESS -> println("Authenticated")
+}`
+            )
+        ), 
+        React.createElement("h3", null, "Blocks as expressions"), 
+        React.createElement("p", null, 
+            "You can use code blocks as expressions, including loops and switches."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let status = switch (code) {
+    200 -> SUCCESS
+    400 -> FAILED
+    else -> UNKNOWN
+}
+    
+Status getStatus(int code) = switch (code) {
+    case SUCCESS -> 200
+    case FAILED -> 400
+    else -> 0
+}
+    
+int code = getStatus(SUCCESS)
+// code is now 200`
+            )
+        ), 
+        React.createElement("h3", null, "Method pre-processing"), 
+        React.createElement("p", null, 
+            "Void allows you to merge an instruction with the return keyword." + " " + 
+            "Therefore you don't need two extra lines to do a negated method guard."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// previously you had to use 
+// two lines of code to return
+void handleCommand(Player p, String command) {
+    if (!p.hasPermission("use")) {
+        p.sendMessage("no perms")
+        return
+    }
+    // handle the command
+}`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// Void's syntax allows you to merge 
+// these two lines together
+if (!p.hasPermission("use"))
+    return p.sendMessage("no perms")
+// note that handleCommand returns void, 
+// so there are no conflicts returning something.
+// the return value of p.sendMessage 
+// (assuming it has one) is ignored`
+            )
+        ), 
+        React.createElement("h3", null, "Method post-processing"), 
+        React.createElement("p", null, 
+            "In Void, you can queue post tasks for the method," + " " + 
+            "that are going to be executed, when the method returns." + " " +
+            "This can be used to prevent duplicating instructions whenever returning."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// prevously you had to do 
+// something like this
+// as you can see you need 
+// to call guard.unlock() 3 times
+void myThreadSafeMethod() {
+    // get some lock for concurrency
+    let guard = ...
+    guard.lock()
+    
+    if (myObject.someError) {
+        guard.unlock()
+        return
+    }
+    
+    if (myObject.someOtherError) {
+        guard.unlock()
+        return
+    }
+    
+    myObject.doSomething()
+    
+    guard.unlock()
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "In Void, you can replace these duplicates using the ", React.createElement(Backticks, null, "defer"), " keyword." + " " + 
+            "Deferred instructions will be executed whenever the method returns."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void myThreadSafeMethod() {
+    let guard = // get some lock for concurrency
+    guard.lock()
+    defer guard.unlock()
+    
+    if (myObject.someError) 
+        return
+    
+    if (myObject.someOtherError) 
+        return
+    
+    myObject.doSomething()
+}`
+            )
+        ), 
+        React.createElement("h3", null, "Conditional variables"), 
+        React.createElement("p", null, 
+            "Conditional variables are local variables that only exist in the scope of the condition." + " " + 
+            "This prevents keeping unused object in the memory, and unnecessary variable name reservation."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// previously you had to 
+// code something like this
+let created = createFolder("myFolder")
+if (!created)
+    return error`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// Void allows you to simplify this code 
+// the following way
+if (let created = createFolder("folder"); !created)
+    return error`
+            )
+        ), 
+        React.createElement("p", null, 
+            "When checking the isntance of objects, in older code practices," + " " + 
+            "you had to first check the instance, then manually cast the value to the new type."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`if (animal is Parrot) {
+    let parrot = (Parrot) animal
+    parrot.fly()
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "However this code requires us to write an extra line of code and manually cast the value."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`if (animal is Parrot parrot) 
+    parrot.fly()`
+            )
+        ), 
+        React.createElement("h3", null, "Labels"), 
+        React.createElement("p", null, 
+            "You can name certain parts of code in order to allow jumps in scopes and nested loops."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// you may label your outer loop 
+// in order to allow \`break\` or \`continue\` on it.
+myLoop: 
+for (let i in 1..10) {
+    for (let j in 1..10) {
+        println($"{i} {j}")
+        if (j == 5) {
+            break myLoop
+        }
+    }
+}`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// you can put labels to non-blocks as well
+// this example shows a loop jump to a section
+hello:
+doSomething()
+if (condition)
+    goto hello`
+            )
+        ), 
+        React.createElement("h3", null, "Multithreading"), 
+        React.createElement("p", null, 
+            "Void features an async value retrieval system. In other programming languages," + " " + 
+            "you might have seen these ad promises, tasks or futures."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`Future<User> getUser() {
+    return Future.completed(myUser)
+}
+    
+let user = getUser().get()`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Although Void lets you to explicitly declare future types," + " " + 
+            "you should rather use the ", React.createElement(Backticks, null, "async/await"), " syntax." + " " +
+            "This automatically wraps the return type to be a Future, and calls ", React.createElement(Backticks, null, "get()"), "."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`async User getUser() {
+    return myUser
+}
+    
+let user = await getUser()`
+            )
+        ), 
+        React.createElement("p", null, 
+            "You can create threads as well and have full control over them."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let task = || println("hello")
+    
+let thread = new Thread(task)
+    .setName("my-thread")
+    .setPriority(0)
+    
+thread.start()`
+            )
+        ), 
+        React.createElement("h3", null, "JSON in code"), 
+        React.createElement("p", null, 
+            "Void has a built-in JSON serializer, which allows you to directly" + " " + 
+            "map Void objects to JSON and vice versa."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// object to string
+let entity = @Json {
+    entityId: 100,
+    meta: {
+        health: 20,
+        food: 10,
+        stamina: 3
+    },
+    position: {
+        x: 200,
+        y: 4,
+        z: -55
+    }
+}`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let json = Json.serialize(entity)
+println($"Data: {json}")`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// string to object
+let data = File.readText("data.json")`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// by default, json is serialized to 
+// Void's built in json tree
+let object = Json.deserialize(data)`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`struct User {
+    string name
+    int userId
+}
+    
+// you can specify a class type as well, 
+// to directly map to an object
+let user = Json.deserialize<User>(data)
+println($"Welcome, {user.name}")`
+            )
+        ), 
+        React.createElement("h3", null, "HTML in code"), 
+        React.createElement("p", null, 
+            "Void lets you have HTML code inside source code." + " " + 
+            "By default, tags are mapped with Void's built-in tag system, however this can be extended."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let page = @Html {
+    <div class="container">
+        <h1>Hello, World</h1>
+    </div>
+}`
+            )
+        ), 
+        React.createElement("h3", null, "Bytecode in code"), 
+        React.createElement("p", null, 
+            "Void features direct bytecode instructions to be placed inside the source code."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`int getSomeMagicValue() {
+    let magic = 30
+    
+    @Bytecode
+    unsafe {
+        // push 100 to the stack
+        ipush 100
+        
+        // store the value on the stack 
+        // in the "magic" variable 
+        istore magic 
+    }
+    
+    return magic
+}
+    
+// the value of "test" will be 100
+let test = getSomeMagicValue()`
+            )
+        ), 
+        
+        React.createElement("h3", null, "Interaction with native code"), 
+        React.createElement("p", null, 
+            "Void allows you to call native library methods." + " " + 
+            "It also has a framework that makes it possible to interace with Void from native context."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// get the implementation of 
+// the method from native code
+@Link("library.dll")
+public native int multiply(int a, int b)
+    
+void main() {
+    // call the native implementation 
+    // from Void context
+    let result = multiply(2, 6)
+    println($"Result: {result}")
+}`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// you can also link native 
+// methods of different signature
+@Link("library.dll")
+@NativeTarget("bar")
+native void foo(@NativeParam("int") int a)`
+            )
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// in case of having multiple native 
+// methods in a class, you should 
+// annotate the class instead
+@Link("library.dll")
+class MyNativeImplementation {
+    native int foo()
+    
+    native void bar(float f)
+    
+    @NativeTarget("baz")
+    native void something()
+}`
+            )
+        ), 
+        React.createElement("h3", null, "Dynamic native implementation loading"), 
+        React.createElement(Code, null, 
+            highlight(
+`let library = new NativeLibrary()
+    .target(typeof(object))
+    
+library.load()`
+            )
+        ), 
+        React.createElement("h3", null, "Creating an HTTP server"), 
+        React.createElement("p", null, 
+            "Void's built-in http module allows you to create efficient web servers with the express-js design."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    // create a new server instance 
+    // which will take care of 
+    // handling the request routes
+    let server = new HttpServer()
+    
+    // create a GET request handler 
+    // for the "/" route
+    server.get("/", |req, res|
+        // respond to the request 
+        // with a plain text message
+        res.send("Hello, World")
+    )
+    
+    // start the web server 
+    // and listen on port 80
+    server.listen(80)
+}`
+            )
+        )
     )
 )
 
@@ -558,7 +1505,13 @@ page = () => (
         React.createElement("div", {class: "docs"}, 
             React.createElement("div", {class: "sidebar"}, 
                 React.createElement("div", {class: "category"}, 
-                    React.createElement("h1", {id: "docs-introduction", onClick: togglePage}, React.createElement("strong", null, "1. "), "Introduction")
+                    React.createElement("h1", {id: "docs-introduction", onClick: togglePage}, React.createElement("strong", null, "1. "), "Introduction"), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", {id: "docs-foreword", onClick: togglePage}, React.createElement("strong", null, "1.1. "), "Foreword")
+                    ), 
+                    React.createElement("div", {class: "section"}, 
+                        React.createElement("h2", {id: "docs-showcase", onClick: togglePage}, React.createElement("strong", null, "1.2. "), "Showcase")
+                    )
                 ), 
                 React.createElement("div", {class: "category"}, 
                     React.createElement("h1", {id: "docs-getting-started", onClick: togglePage}, React.createElement("strong", null, "2. "), "Getting started"), 
@@ -719,7 +1672,7 @@ page = () => (
                 React.createElement("div", {class: "category"}, 
                     React.createElement("h1", {id: "docs-json-parsing", onClick: togglePage}, React.createElement("strong", null, "13. "), "Json parsing"), 
                     React.createElement("div", {class: "section"}, 
-                        React.createElement("h2", {id: "docs-json-in-code", onClick: togglePage}, React.createElement("strong", null, "13.1. "), "JSON in code")
+                        React.createElement("h2", {id: "docs-json-in-code", onClick: togglePage}, React.createElement("strong", null, "13.1. "), "Json in code")
                     ), 
                     React.createElement("div", {class: "section"}, 
                         React.createElement("h2", {id: "docs-json-serialization", onClick: togglePage}, React.createElement("strong", null, "13.2. "), "Json serialization")
@@ -814,6 +1767,8 @@ page = () => (
 )
 const documents = {
     'introduction': Introduction,
+    'foreword': Foreword,
+    'showcase': DocsShowcase,
     'getting-started': GettingStarted,
     'installation': Installation,
     'hello-world': HelloWorld,

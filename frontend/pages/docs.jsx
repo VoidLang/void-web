@@ -5,6 +5,12 @@ page = () => (
             <div class="sidebar">
                 <div class="category">
                     <h1 id="docs-introduction" onClick={togglePage}><strong>1. </strong>Introduction</h1>
+                    <div class="section">
+                        <h2 id="docs-foreword" onClick={togglePage}><strong>1.1. </strong>Foreword</h2>
+                    </div>
+                    <div class="section">
+                        <h2 id="docs-showcase" onClick={togglePage}><strong>1.2. </strong>Showcase</h2>
+                    </div>
                 </div>
                 <div class="category">
                     <h1 id="docs-getting-started" onClick={togglePage}><strong>2. </strong>Getting started</h1>
@@ -165,7 +171,7 @@ page = () => (
                 <div class="category">
                     <h1 id="docs-json-parsing" onClick={togglePage}><strong>13. </strong>Json parsing</h1>
                     <div class="section">
-                        <h2 id="docs-json-in-code" onClick={togglePage}><strong>13.1. </strong>JSON in code</h2>
+                        <h2 id="docs-json-in-code" onClick={togglePage}><strong>13.1. </strong>Json in code</h2>
                     </div>
                     <div class="section">
                         <h2 id="docs-json-serialization" onClick={togglePage}><strong>13.2. </strong>Json serialization</h2>
@@ -261,6 +267,8 @@ page = () => (
 
 const documents = {
     'introduction': Introduction,
+    'foreword': Foreword,
+    'showcase': DocsShowcase,
 
     'getting-started': GettingStarted,
     'installation': Installation,
