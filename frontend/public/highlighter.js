@@ -577,6 +577,42 @@ class Prettier {
         while (this.hasNext()) {
             const token = this.get()
 
+            const element = React.createElement('span')
+            let value = token.value
+
+            if (token.type == TokenType.String)
+                value = '"' + value + '"'
+            else if (token.type == TokenType.Character)
+                value = '\'' + value + '\''
+
+            let style = STYLES[token.getName()]
+
+            if (token.type == TokenType.Identifier) {
+                if (this.peek().eq(TokenType.Separator, '(')) 
+                    style = STYLES.Method
+                else {
+                    const normal = token.value.charAt(0)
+                    const upper = normal.toUpperCase()
+                    if (normal == upper)
+                        style = 'type'
+                }
+            }
+
+            element.attributes.class = [style]
+            element.content = value
+
+            elements.push(element)
+        }
+
+        return elements
+    }
+
+    convertRaw() {
+        let elements = []
+
+        while (this.hasNext()) {
+            const token = this.get()
+
             const element = document.createElement('span')
             let value = token.value
 
@@ -608,11 +644,11 @@ class Prettier {
     }
 
     at(index) {
-        return this.has(index) ? tokens[index] : Token.of(TokenType.None) 
+        return this.has(index) ? this.tokens[index] : Token.of(TokenType.None) 
     }
 
     has(index) {
-        return index >= 0 && index < tokens.length
+        return index >= 0 && index < this.tokens.length
     }
 
     peek() {
@@ -628,6 +664,26 @@ class Prettier {
     }
 }
 
+const highlight = (code) => {
+    const tokenizer = new Tokenizer(code)
+
+    let tokens = []
+    let token
+    do {
+        token = tokenizer.next()
+        tokens.push(token)
+    } while (token.hasNext())
+    
+    const prettier = new Prettier(tokens)
+    const elements = prettier.convert()
+
+    const holder = React.createElement('pre')
+    holder.content = elements
+
+    return holder
+}
+
+/*
 let source = `void main() {
     let input = ["one", "12", "hello", "-7"]
 
@@ -661,3 +717,4 @@ const elements = prettier.convert()
 
 for (const element of elements) 
     code.appendChild(element)
+*/

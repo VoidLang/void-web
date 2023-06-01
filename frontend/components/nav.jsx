@@ -2,7 +2,9 @@ const Nav = () => {
     return (
         <div class="nav">
             <div class="nav-left nav-side">
-                <h1>Void</h1>
+                <a href="/">
+                    <h1>Void</h1>
+                </a>
             </div>
             <div class="nav-right nav-side">
                 <a href="https://github.com/voidlang/void" target="_blank" class="link">Docs</a>

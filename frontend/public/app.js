@@ -154,7 +154,9 @@ const Nav = () => {
     return (
         React.createElement("div", {class: "nav"}, 
             React.createElement("div", {class: "nav-left nav-side"}, 
-                React.createElement("h1", null, "Void")
+                React.createElement("a", {href: "/"}, 
+                    React.createElement("h1", null, "Void")
+                )
             ), 
             React.createElement("div", {class: "nav-right nav-side"}, 
                 React.createElement("a", {href: "https://github.com/voidlang/void", target: "_blank", class: "link"}, "Docs"), 
@@ -254,6 +256,7 @@ const Introduction = () => (
 
 const Backticks = (x) => React.createElement("span", {class: "backticks code"}, x)
 const Terminal = (x) => React.createElement("div", {class: "code block terminal"}, x)
+const Code = (x) => React.createElement("div", {class: "code block terminal"}, x)
 
 const NotImplemented = () => (
     React.createElement("div", null, 
@@ -286,7 +289,7 @@ const HelloWorld = () => (
             "This will generate a new project folder named ", React.createElement(Backticks, null, "Hello World"), "."
         ), 
         React.createElement(Terminal, null, 
-            React.createElement("pre", null, "void -n HelloWorld")
+            React.createElement("pre", null, "void new HelloWorld")
         ), 
         React.createElement("h3", null, "File architecture"), 
         React.createElement("p", null, "A Void project consists of the following files and folders:"), 
@@ -303,6 +306,44 @@ const HelloWorld = () => (
             React.createElement("li", null, 
                 React.createElement(Backticks, null, "void.toml"), " ", React.createElement(Light, null, "- This file specifies project settings, dependencies and built configurations")
             )
+        ), 
+        React.createElement("h2", null, "Creating the first program"), 
+        React.createElement("p", null, 
+            "Create a new source file called ", React.createElement(Backticks, null, "Main.vs"), " inside the ", React.createElement(Backticks, null, "src"), " folder." + " " +
+            "The ", React.createElement(Backticks, null, ".vs"), " file extension stands for Void Source."
+        ), 
+        React.createElement("p", null, 
+            "Next, we are going to write a simple code, that will output ", React.createElement(Backticks, null, "Hello, World!"), " to the console." + " " +
+            "In the ", React.createElement(Backticks, null, "Main.vs"), " file, type the following code."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    println("Hello, World!")
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "After that, the next step is to compile the program. This process will convert Void source files to an executable format." + " " +
+            "To compile the project, you need to the type command below."
+        ), 
+        React.createElement(Terminal, null, 
+            React.createElement("pre", null, "void compile")
+        ), 
+        React.createElement("h2", null, "Running the first program"), 
+        React.createElement("p", null, 
+            "The compiled executable file has been created to ", React.createElement(Backticks, null, "./target/HelloWorld.void"), "." + " " +
+            "To run this file, all you need to do is execute the following code."
+        ), 
+        React.createElement(Terminal, null, 
+            "void run"
+        ), 
+        React.createElement("p", null, 
+            "Void will automatically detect, that you are in the project's folder, so you don't need to specify" + " " + 
+            "the path of the executable. Alternatively, you can tell Void, what to run by typing the code below." 
+        ), 
+        React.createElement(Terminal, null, 
+            "void run path/to/Executable.void"
         )
     )
 )
@@ -318,6 +359,186 @@ const Installation = () => (
     React.createElement("div", null, 
         React.createElement("h2", null, "Installation"), 
         React.createElement("p", null, "This page is yet to be implemented.")
+    )
+)
+
+const Variables = () => (
+    React.createElement("div", null, 
+        React.createElement("h2", null, "Variables"), 
+        React.createElement("p", null, 
+            "Variables in void are scoped temporary value holders, which may be mutable or immutable." + " " +
+            "Variables are declared using the ", React.createElement(Backticks, null, "let"), " keyword, followed by the name of the variable."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let x = 100
+let y = 200`
+            )
+        ), 
+        React.createElement("h3", null, "Explicit type declaration"), 
+        React.createElement("p", null, 
+            "Although Void ensures strong typing, when using the ", React.createElement(Backticks, null, "let"), " keyword, you do not need to manually" + " " +
+            "specify the type of the variable, as Void automatically detects them."
+        ), 
+        React.createElement("p", null, 
+            "Explicit variable type declaration is also possible, in case you don't want to initialize the variable on declaration." + " " +
+            "Here you ", React.createElement("strong", null, "must"), " specify the type of the variable, because you do not provide any information to Void" + " " + 
+            "that what values you are willing to store in it."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`int x
+int y`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Here you can see that the variables ", React.createElement(Backticks, null, "x"), " and ", React.createElement(Backticks, null, "y"), " are now declared, they exist" + " " +
+            "in the Void program, they are signed integers and they don't have a value by default." 
+        ), 
+        React.createElement("p", null, 
+            "You could also initialize explicitly typed variables, but it is not recommended. User ", React.createElement(Backticks, null, "let"), " instead."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`int x = 30
+int y = 50`
+            )
+        ), 
+        React.createElement("h3", null, "Mutability and immutability"), 
+        React.createElement("p", null, 
+            "Variables are either mutable or immutable value holders in the code." + " " +
+            "Immutable variables can be only assigned once, mutable variables may change during runtime."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    let x = 100
+    println($"value of x is: {x}")
+    x = 200
+    println($"value of x is {x}")
+}`
+            )
+        ), 
+        React.createElement(Terminal, null, 
+            React.createElement("pre", null, 
+                "value of x is 100", React.createElement("br", null), 
+                "value of x is 200"
+            )
+        ), 
+        React.createElement("p", null, 
+            "In Void, variables are mutable by default. To create immutable variables, you need to need to use",  
+            React.createElement(Backticks, null, "final"), " instead of ", React.createElement(Backticks, null, "let"), "."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    final x = 100
+    x = 150
+}`
+            )
+        ), 
+        React.createElement(Terminal, null, 
+            React.createElement("pre", null, 
+                "error[E069]: cannot assign twice to immutable variable `x`", React.createElement("br", null), 
+                React.createElement("pre", null, " --> src/Main.vs:3:5"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |"), React.createElement("br", null), 
+                React.createElement("pre", null, "2 |    final x = 100"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |          |"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |          first assigment to `x`"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |          help: consider making this varible mutable: `let x`"), React.createElement("br", null), 
+                React.createElement("pre", null, "3 |    x = 150"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |    ^^^^^^^ cannot assign twice to immutable variable")
+            )
+        ), 
+        React.createElement("h3", null, "Variable redeclaration"), 
+        React.createElement("p", null, 
+            "Normally, you can only assign values to a variable of the same type." + " " +
+            "However, in production you may need to use the same value of the same variable, but" + " " + 
+            "in a different type."
+        ), 
+        React.createElement("p", null, 
+            "Normally languages doesn't let you declare variables twice," + " " + 
+            "but as for some other languages such as Void, lets you to do that."
+        ), 
+        React.createElement("p", null, 
+            "This is becuase in many cases you need to swap between variable types for a value," + " " + 
+            "and having too much variables for a single value," + " " + 
+            "or having long lines of type conversion is both considered a bad practice."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// bad code
+int balance = database
+    .getUser("username")
+    .getBalance()
+string balanceStr = $"{balance} USD"
+    
+// also bad code
+string balance = String.from(
+    database
+        .getUser("username")
+        .getBalance()
+) + " USD"`
+            )
+        ), 
+        React.createElement("p", null, 
+            "These examples are either way overcompilcated or they need duplicate variables to work with." + " " +
+            "This can be simplified the following way."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`// initially, the type of \`balance\` is an integer
+let balance = database
+    .getUser("username")
+    .getBalance()
+    
+// secondly, via redeclaration, the type is now string
+let balance = "{balance} USD"`
+            )
+        ), 
+        React.createElement("h3", null, "Static variables"), 
+        React.createElement("p", null, 
+            "By default, variables live only in the scope of a method." + " " + 
+            "Static variables however provide a way to statically store data in the method," + " " +
+            "that is accessible for further method calls."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`int getIncrementId() {
+    static let counter = 0
+    return counter++
+}
+ 
+void main() {
+    println(getIncrementId())
+    println(getIncrementId())
+    println(getIncrementId())
+}
+`
+            )
+        ), 
+        React.createElement(Terminal, null, 
+            React.createElement("pre", null, 
+                "0", React.createElement("br", null), 
+                "1", React.createElement("br", null), 
+                "2"
+            )
+        ), 
+        React.createElement("h3", null, "Constants"), 
+        React.createElement("p", null, 
+            "Constants are similar to immutable variables, however they are resolved at compile-time, not run-time." + " " +
+            "They can also only hold values of constant literals, such as numbers, strings, and booleans."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`const ENTITY_HEIGHT = 100
+const RENDER_DISTANCE = 150
+`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Unlike variables, constants can be placed outside methods, or even outside classes."
+        )
     )
 )
 
@@ -595,7 +816,8 @@ const documents = {
     'introduction': Introduction,
     'getting-started': GettingStarted,
     'installation': Installation,
-    'hello-world': HelloWorld
+    'hello-world': HelloWorld,
+    'variables': Variables,
 }
 let docsRoot
 let lastTopic

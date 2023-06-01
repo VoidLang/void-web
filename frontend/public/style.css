@@ -128,6 +128,12 @@ body {
     transition: 0.2s;
 }
 
+@media(max-width: 320px) {
+    .nav-right a:not(.nav-right .button) {
+        display: none;
+    }
+}
+
 .nav-right .link:hover {
     color: lime;
     border-bottom: 2px solid lime;
@@ -639,10 +645,9 @@ br {
 }
 
 .docs {
-    background: red;
     display: flex;
     height: calc(100vh - 80px);
-    overflow-y: scroll;
+    overflow: auto;
 }
 
 .docs::-webkit-scrollbar {
@@ -768,11 +773,41 @@ br {
     line-height: 20px;
 }
 
+::-moz-selection {
+    background: #80808052;
+    color: #eeeeee;
+}
+  
+::selection {
+    background: #80808052;
+    color: #eeeeee;
+}
+
 .docs .content .block {
     background: #1d1f21;
     border-radius: 3px;
     padding: 10px;
     font-size: 16px;
+    margin-bottom: 20px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.docs .content .block .default { color: #9a9ea7 }
+.docs .content .block .keyword { color: #7f7aa6 }
+.docs .content .block .operator { color: #78a4b5 }
+.docs .content .block .string { color: #98c379 }
+.docs .content .block .literal { color: #c6c5c4 }
+.docs .content .block .error { color: #a83232 }
+.docs .content .block .method { color: #6a8cc0 }
+.docs .content .block .type { color: #e1c46c }
+.docs .content .block .comment { color: #545454 }
+
+.docs .content .block::-webkit-scrollbar {
+    height: 2px;
+}
+
+.docs .content ul {
     margin-bottom: 20px;
 }
 
