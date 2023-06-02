@@ -272,7 +272,7 @@ let b = [2; "hello"] // ["hello", "hello]`
         <Terminal>
             <pre>
                 error[E069]: cannot dynamically create array `arr`<br/>
-                <pre> --&gt;    src/Main.vs:3:5</pre><br/>
+                <pre> --&gt; src/Main.vs:3:5</pre><br/>
                 <pre>  |</pre><br/>
                 <pre>2 |    let len = 5</pre><br/>
                 <pre>  |        |</pre><br/>
