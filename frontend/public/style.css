@@ -750,6 +750,13 @@ br {
     font-size: 1.3em;
 }
 
+.docs .content h4 {
+    padding-bottom: 20px;
+    color: #bcbdd0;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
 
 .docs .content a {
     padding-bottom: 20px;
@@ -821,4 +828,30 @@ br {
 
 .space {
     height: 100vh;
+}
+
+.docs .content table {
+    margin: auto;
+    margin-bottom: 20px;
+    color: #dbdbdd;
+    border-collapse: collapse;
+    background: red;
+}
+
+.docs .content th, .docs .content td {
+    border: 1px solid #2d3244 !important;
+}
+
+.docs .content th {
+    background: #272438 !important;
+}
+
+.docs .content table td, .docs .content table th {
+    text-align: left;
+    padding: 4px 15px;
+    background: #1a1826;
+}
+
+.docs .content .small {
+    font-size: 12px;
 }

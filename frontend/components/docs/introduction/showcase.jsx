@@ -191,7 +191,7 @@ bool, char, string`
         </p>
         <Code>
             {highlight(
-`ubyte, ushort, uint, ulong, ufloat, udouble`
+`ubyte, ushort, uint, ulong`
             )}
         </Code>
 
@@ -817,7 +817,7 @@ println($"Data: {json}")`
         <Code>
             {highlight(
 `// string to object
-let data = File.readText("data.json")`
+let data = "{ \\"name\\": \\"admin\\", \\"userId\\": 12345 }"`
             )}
         </Code>
         <Code>

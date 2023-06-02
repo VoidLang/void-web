@@ -248,6 +248,7 @@ class Tokenizer {
             case '~':
             case '$':
             case '|':
+            case '%':
                 return true
             default:
                 return false
@@ -498,6 +499,7 @@ class Tokenizer {
         this.skip(1)
         
         while (this.has(this.cursor)) {
+            /*
             if (escapeNext) {
                 switch (this.peek()) {
                     case 'n':
@@ -520,17 +522,21 @@ class Tokenizer {
                 }
                 escapeNext = false
             }
+            */
 
             if (this.peek() == '\\')
                 escapeNext = true
-
-            else if ((this.peek() == '"' && string) || (this.peek() == '\'' && !string)) {
+            
+            if (((this.peek() == '"' && string) || (this.peek() == '\'' && !string)) && !escapeNext) {
                 this.skip(1)
                 return Token.of(string ? TokenType.String : TokenType.Character, content)
             }
 
-            else
+            else {
+                if (this.peek() != '\\')
+                    escapeNext = false
                 content += this.peek()
+            }
             
             this.skip(1)
         }

@@ -275,6 +275,7 @@ const documents = {
     'hello-world': HelloWorld,
 
     'variables': Variables,
+    'primitive-types': PrimitiveTypes,
 }
 
 let docsRoot

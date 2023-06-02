@@ -12,7 +12,7 @@ const Foreword = () => (
             I wanted to make a language that could do both.
         </p>
         <p>
-            I took heavy inspirations from popular languages, such as Java, C#, Rust, Golang, Kotlin, Dart.
+            I took heavy inspirations from popular languages, such as Java, C#, C++, Rust, Golang, Kotlin, Dart.
             I tried to include the useful features of those, that people are already used to, as well as 
             coming up with my own ideas, how to enchant programming experience.
         </p>
@@ -41,6 +41,7 @@ const Foreword = () => (
             I wish you the best of luck widening your programming knowledge, and exploring something new.
             Have fun learning it and welcome to the Void community.
         </p>
-        <p>— AdvancedAntiSkid from <a href="https://inventex.dev" style="display: inline-block">Inventex Innovations</a></p>
+        <a href="https://inventex.dev" target="_blank" style="padding-bottom: 0; font-size: 18px">Inventex Innovations</a>
+        <p>— AdvancedAntiSkid</p>
     </div>
 )

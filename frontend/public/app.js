@@ -228,6 +228,7 @@ const Showcase = () => {
 const Backticks = (x) => React.createElement("span", {class: "backticks code"}, x)
 const Terminal = (x) => React.createElement("div", {class: "code block terminal"}, x)
 const Code = (x) => React.createElement("div", {class: "code block terminal"}, x)
+const Small = (x) => React.createElement("span", {class: "small"}, x)
 
 const NotImplemented = () => (
     React.createElement("div", null, 
@@ -347,7 +348,7 @@ const Foreword = () => (
             "I wanted to make a language that could do both."
         ), 
         React.createElement("p", null, 
-            "I took heavy inspirations from popular languages, such as Java, C#, Rust, Golang, Kotlin, Dart." + " " +
+            "I took heavy inspirations from popular languages, such as Java, C#, C++, Rust, Golang, Kotlin, Dart." + " " +
             "I tried to include the useful features of those, that people are already used to, as well as" + " " + 
             "coming up with my own ideas, how to enchant programming experience."
         ), 
@@ -376,7 +377,8 @@ const Foreword = () => (
             "I wish you the best of luck widening your programming knowledge, and exploring something new." + " " +
             "Have fun learning it and welcome to the Void community."
         ), 
-        React.createElement("p", null, "— AdvancedAntiSkid from ", React.createElement("a", {href: "https://inventex.dev", style: "display: inline-block"}, "Inventex Innovations"))
+        React.createElement("a", {href: "https://inventex.dev", target: "_blank", style: "padding-bottom: 0; font-size: 18px"}, "Inventex Innovations"), 
+        React.createElement("p", null, "— AdvancedAntiSkid")
     )
 )
 
@@ -593,7 +595,7 @@ bool, char, string`
         ), 
         React.createElement(Code, null, 
             highlight(
-`ubyte, ushort, uint, ulong, ufloat, udouble`
+`ubyte, ushort, uint, ulong`
             )
         ), 
         React.createElement("h3", null, "Simplified number constants"), 
@@ -1201,7 +1203,7 @@ println($"Data: {json}")`
         React.createElement(Code, null, 
             highlight(
 `// string to object
-let data = File.readText("data.json")`
+let data = "{ \\"name\\": \\"admin\\", \\"userId\\": 12345 }"`
             )
         ), 
         React.createElement(Code, null, 
@@ -1344,6 +1346,375 @@ library.load()`
     // start the web server 
     // and listen on port 80
     server.listen(80)
+}`
+            )
+        )
+    )
+)
+
+const PrimitiveTypes = () => (
+    React.createElement("div", null, 
+        React.createElement("h2", null, "Primitive types"), 
+        React.createElement("p", null, 
+            "Every variable in Void is from a certain data type, which tells Void how to handle that data." + " " +
+            "There are two categories of types in Void, which, this section will discuss: scalar and compound types."
+        ), 
+        React.createElement("h3", null, "Scalar types"), 
+        React.createElement("p", null, 
+            "Scalar types represent a single value. These can be either numbers, strings, characters or booleans."
+        ), 
+        
+        React.createElement("h4", null, "Integer types"), 
+        React.createElement("p", null, 
+            "Integer types are numbers without a decimal component." + " " +
+            "An integer can be either signed or unsigned."
+        ), 
+        React.createElement("p", null, 
+            "A signed number means that it has a ", React.createElement(Backticks, null, "negative indicator sign"), " which tells, whether" + " " +
+            "the number is positive or negative."
+        ), 
+        React.createElement("p", null, 
+            "Each signed integer can hold a number in the inclusive range of -(2", React.createElement("sup", null, "n - 1"), ") to 2", React.createElement("sup", null, "n - 1"), " - 1," + " " + 
+            "where ", React.createElement("em", null, "n"), " is the number of bits that variants use."
+        ), 
+        React.createElement("p", null, 
+            "Unsigned numbers on the other hand can be only positive in the range of 0 to 2", React.createElement("sup", null, "n"), "-1"
+        ), 
+        React.createElement("p", null, 
+            "For example, a byte can hold values from -128 to 127, a ubyte can hold values from 0 to 255."
+        ), 
+        React.createElement("table", null, 
+            React.createElement("tr", null, 
+                React.createElement("th", null, "Size"), 
+                React.createElement("th", null, "Signed"), 
+                React.createElement("th", null, "Unsigned")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "8-bit"), 
+                React.createElement("td", null, "byte"), 
+                React.createElement("td", null, "ubyte")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "16-bit"), 
+                React.createElement("td", null, "short"), 
+                React.createElement("td", null, "ushort")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "32-bit"), 
+                React.createElement("td", null, "int"), 
+                React.createElement("td", null, "uint")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "64-bit"), 
+                React.createElement("td", null, "long"), 
+                React.createElement("td", null, "ulong")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "128-bit"), 
+                React.createElement("td", null, "bigint"), 
+                React.createElement("td", null, "ubigint")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "arch"), 
+                React.createElement("td", null, "isize"), 
+                React.createElement("td", null, "usize")
+            )
+        ), 
+        React.createElement("p", null, 
+            "If you are unsure which type to use, you should use ", React.createElement(Backticks, null, "int"), "," + " " + 
+            "as it is the default non-decimal type used in many programming languages." 
+        ), 
+        React.createElement("p", null, 
+            "Integer literals are human-readable number values in the source code." + " " +
+            "You can use the integer literals listed below." 
+        ), 
+        React.createElement("table", null, 
+            React.createElement("tr", null, 
+                React.createElement("th", null, "Literal name"), 
+                React.createElement("th", null, "Example")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "Decimal"), 
+                React.createElement("td", null, "1337")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "Hexadecimal"), 
+                React.createElement("td", null, "0xFFFFFF")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "Binary"), 
+                React.createElement("td", null, "0b1000101")
+            )
+        ), 
+        React.createElement("h4", null, "Floating-point types"), 
+        React.createElement("p", null, 
+            "Floating-point numbers are like integers, but with decimal points." + " " +
+            "Void currently supports two signed types of these numbers: ", React.createElement(Backticks, null, "float"), " and ", React.createElement(Backticks, null, "double"), "." + " " +
+            "Floating-point numbers are represented according to the IEEE-754 standard."
+        ), 
+        React.createElement("table", null, 
+            React.createElement("tr", null, 
+                React.createElement("th", null, "Name"), 
+                React.createElement("th", null, "Size"), 
+                React.createElement("th", null, "Precision")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "float"), 
+                React.createElement("td", null, "32-bit"), 
+                React.createElement("td", null, "single precision")
+            ), 
+            React.createElement("tr", null, 
+                React.createElement("td", null, "double"), 
+                React.createElement("td", null, "32-bit"), 
+                React.createElement("td", null, "double precision")
+            )
+        ), 
+        React.createElement("h4", null, "Numberic operations"), 
+        React.createElement("p", null, 
+            "Void supports the mathematical operations, every other language supports."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    // addition
+    let sum = 10 + 2
+    
+    // subtraction
+    let difference = 170 - 2.5
+    
+    // negation
+    let positive = 255.4
+    let negated = -positive
+    
+    // multiplication
+    let product = 6 * 8
+    
+    // division
+    let quotient = 241.5 / 3.5
+    let truncated = 10 / 3
+    
+    // remainder
+    let remainder = 12 % 5
+    
+    // exponentiation
+    let power = 10 ^ 6
+}`
+            )
+        ), 
+        React.createElement("h4", null, "The string type"), 
+        React.createElement("p", null, 
+            "The ", React.createElement(Backticks, null, "string"), " type is a dynamic-size holder of ", React.createElement(Backticks, null, "UTF-8"), " alphabetic characters."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    let text = "Hello, World"
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Note that ", React.createElement(Backticks, null, "string"), " literals are put in between double quotes." + " " + 
+            "A ", React.createElement(Backticks, null, "string"), " holds n * 4 bytes of memory," + " " + 
+            "where ", React.createElement("em", null, "n"), " is the length of the string. Note that unlike all of the primitive types, string" + " " +
+            "does not have a fixed size. It may reduce or expand on modification."
+        ), 
+        React.createElement("h4", null, "The character type"), 
+        React.createElement("p", null, 
+            "The ", React.createElement(Backticks, null, "char"), " type is an ", React.createElement(Backticks, null, "UTF-8"), " representation of an alphabetic character" + " " +
+            "represented with 4 bytes in the memory." + " " +
+            "A ", React.createElement(Backticks, null, "char"), " can hold values from ", React.createElement(Backticks, null, "\\u0000"), " to ", React.createElement(Backticks, null, "'\\uffff'"), " or",  
+            React.createElement(Backticks, null, "65,535"), " characters inclusive."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    let c = 'A'
+    let hex = '\\u46'
+    let emote = '👋'
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Note that ", React.createElement(Backticks, null, "char"), " literals are put in between single quotes, unlike strings." + " " + 
+            "A ", React.createElement(Backticks, null, "char"), " is represented with 4 bytes of memory." 
+        ), 
+        React.createElement("h4", null, "The boolean type"), 
+        React.createElement("p", null, 
+            "The ", React.createElement(Backticks, null, "bool"), " type can hold a logical value of either ", React.createElement(Backticks, null, "true"), 
+            "or ", React.createElement(Backticks, null, "false"), ". A ", React.createElement(Backticks, null, "bool"), " is represented in one byte." 
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    let x = true
+    let y = false
+}`
+            )
+        ), 
+        React.createElement("h3", null, "Compound types"), 
+        React.createElement("p", null, 
+            "Compound types in Void are complex data holders. Void supports two of these compound types: tuples and arrays."
+        ), 
+        React.createElement("h4", null, "The array type"), 
+        React.createElement("p", null, 
+            "An ", React.createElement(Backticks, null, "array"), " can hold a fixed number of values from the same kind." + " " +
+            "An array holds n * sizeof(T) memory, where ", React.createElement("em", null, "n"), " is the length or the array, and", 
+            React.createElement("em", null, "T"), " is the type of the array."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    let numbers = [1, 2, 3, 4, 5]
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "The elements of an array can be accessed using their indices. The array index range goes from" + " " + 
+            "0 to n - 1 inclusive, where ", React.createElement("em", null, "n"), " is the length of the array."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    let nums = [1, 2, 3]
+    
+    let first = nums[0]
+    let second = nums[1]
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "You can also create an array using the auto-fill syntax."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let a = [0..10]
+let b = [0..=10] // includes 10`
+            )
+        ), 
+        React.createElement("p", null, 
+            "You can also initialize an array to contain the same value for each element." + " " +
+            "First you need to specify the size of the array, then what value you want to fill with."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let a = [3; 5] // [5, 5, 5]
+let b = [2; "hello"] // ["hello", "hello]`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Note that arrays in Void are not dynamic. Therefore you cannot create arrays from a run-time specified length." 
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    let len = 5
+    let arr = [len; 0]
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "This previous code causes a compile exception, because it is expecting the array size to be a constant."
+        ), 
+        React.createElement(Terminal, null, 
+            React.createElement("pre", null, 
+                "error[E069]: cannot dynamically create array `arr`", React.createElement("br", null), 
+                React.createElement("pre", null, " -->    src/Main.vs:3:5"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |"), React.createElement("br", null), 
+                React.createElement("pre", null, "2 |    let len = 5"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |        |"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |        length of array is specified here `len`"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |        help: consider making this varible constant: `const len = 5`"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |              or use List instead"), React.createElement("br", null), 
+                React.createElement("pre", null, "3 |    let arr = [len; 0]"), React.createElement("br", null), 
+                React.createElement("pre", null, "  |              ^^^^^^^^ cannot dynamically specify array length")
+            )
+        ), 
+        React.createElement("p", null, 
+            "For dynamically working with elements, you should use a List instead, as that can" + " " + 
+            "increase or decrease capacity during run-time."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    let numbers = list([0..3])
+    list.add(3)
+    // [0, 1, 2, 3]
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Array implement many useful methods, that you can monstly only find in Lists when using" + " " + 
+            "other programming languages. Void implements a wide set of tools to enchant the experience" + " " +
+            "of using arrays." 
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`let numbers = [1, -2, 3, -4]
+    
+let positive = numbers
+    .stream()
+    .filter(|x| x > 0)
+    .collect()
+    
+println("positive numbers: {positive}")
+`
+            )
+        ), 
+        React.createElement("h4", null, "The tuple type"), 
+        React.createElement("p", null, 
+            "A ", React.createElement(Backticks, null, "tuple"), " type is an ordered holder of values of different kinds." + " " +
+            "Unlike arrays, tuples can hold any types value, as they are specified in the tuple declaration." 
+        ), 
+        React.createElement("p", null, 
+            "By default, the members of tuples can be accessed by their index, the following way." 
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`main() {
+    (int, string) data = (123, "hello")
+    
+    let number = data.0
+    let text = data.1
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Named tuple members can be accessed via their names."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    (bool success, string message) result = (true, "authenticated")
+    
+    let success = result.success
+    let message = result.message
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "Tuple members can be also accessed using ", React.createElement(Backticks, null, "tuple deconstruction"), "," + " " + 
+            "where the specific members of the tuple are referenced."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    (string, int) order = ("Pepperoni", 3)
+    
+    let (type, amount) = order
+    
+    println($"ordering {amount} slices of {type} pizza")
+}`
+            )
+        ), 
+        React.createElement("p", null, 
+            "You don't need to explicitly set the types of the tuple members when the tuple is initialized" + " " +
+            "when declaring." + " " +
+            "You may also have nested tuple members as well."
+        ), 
+        React.createElement(Code, null, 
+            highlight(
+`void main() {
+    let tuple = (12, (true, "hello"))
 }`
             )
         )
@@ -1814,6 +2185,7 @@ const documents = {
     'installation': Installation,
     'hello-world': HelloWorld,
     'variables': Variables,
+    'primitive-types': PrimitiveTypes,
 }
 let docsRoot
 let lastTopic
