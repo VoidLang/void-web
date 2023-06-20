@@ -7,7 +7,7 @@ const Nav = () => {
                 </a>
             </div>
             <div class="nav-right nav-side">
-                <a href="https://github.com/voidlang/void" target="_blank" class="link">Docs</a>
+                <a href="/docs" class="link">Docs</a>
                 <a href="https://github.com/voidlang/void" target="_blank" class="link">GitHub</a>
                 <a href="https://github.com/voidlang/void" target="_blank" class="button">Try It</a>
             </div>

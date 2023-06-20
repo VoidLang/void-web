@@ -159,7 +159,7 @@ const Nav = () => {
                 )
             ), 
             React.createElement("div", {class: "nav-right nav-side"}, 
-                React.createElement("a", {href: "https://github.com/voidlang/void", target: "_blank", class: "link"}, "Docs"), 
+                React.createElement("a", {href: "/docs", class: "link"}, "Docs"), 
                 React.createElement("a", {href: "https://github.com/voidlang/void", target: "_blank", class: "link"}, "GitHub"), 
                 React.createElement("a", {href: "https://github.com/voidlang/void", target: "_blank", class: "button"}, "Try It")
             )
@@ -2202,7 +2202,11 @@ const togglePage = (page) => {
     const id = page.attributes.id.substring('docs-'.length)
     
     const component = (documents[id] || NotImplemented)()
-    docsRoot.innerHTML = component.parse()
+    docsRoot.innerHTML = ''
+    // execute this a tick later, in order to reset scroll
+    setTimeout(() => {
+        docsRoot.innerHTML = component.parse()
+    }, 1)
 }
 
 app.register('docs', page);

@@ -295,5 +295,9 @@ const togglePage = (page) => {
     const id = page.attributes.id.substring('docs-'.length)
     
     const component = (documents[id] || NotImplemented)()
-    docsRoot.innerHTML = component.parse()
+    docsRoot.innerHTML = ''
+    // execute this a tick later, in order to reset scroll
+    setTimeout(() => {
+        docsRoot.innerHTML = component.parse()
+    }, 1)
 }
