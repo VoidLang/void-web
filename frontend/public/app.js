@@ -386,7 +386,7 @@ const Introduction = () => (
     React.createElement("div", null, 
         React.createElement("h2", null, "What is Void?"), 
         React.createElement("p", null, 
-            "Void is a virtual-machine-based programing language designed for developers to be able to create clean," + " " + 
+            "Void is a general-purpose programing language designed for developers to be able to create clean," + " " + 
             "fast and stable multi-platform applications." + " " +
             "It has has a relatively easy syntax, that follows most of the already existing code conventions." + " " +
             "Void features many utilities that enchant the experience of coding, such as object destruction," + " " + 
@@ -1618,7 +1618,7 @@ let b = [2; "hello"] // ["hello", "hello]`
         React.createElement(Terminal, null, 
             React.createElement("pre", null, 
                 "error[E069]: cannot dynamically create array `arr`", React.createElement("br", null), 
-                React.createElement("pre", null, " -->    src/Main.vs:3:5"), React.createElement("br", null), 
+                React.createElement("pre", null, " --> src/Main.vs:3:5"), React.createElement("br", null), 
                 React.createElement("pre", null, "  |"), React.createElement("br", null), 
                 React.createElement("pre", null, "2 |    let len = 5"), React.createElement("br", null), 
                 React.createElement("pre", null, "  |        |"), React.createElement("br", null), 

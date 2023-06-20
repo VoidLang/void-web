@@ -2,7 +2,7 @@ const Introduction = () => (
     <div>
         <h2>What is Void?</h2>
         <p>
-            Void is a virtual-machine-based programing language designed for developers to be able to create clean, 
+            Void is a general-purpose programing language designed for developers to be able to create clean, 
             fast and stable multi-platform applications.
             It has has a relatively easy syntax, that follows most of the already existing code conventions.
             Void features many utilities that enchant the experience of coding, such as object destruction, 
