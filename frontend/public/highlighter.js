@@ -221,6 +221,16 @@ class Tokenizer {
         }
     }
 
+    isBinary(c) {
+        switch (c) {
+            case '0':
+            case '1':
+                return true
+            default:
+                return false
+        }
+    }
+
     isNumberContent(c) {
         switch (c) {
             case '.':
@@ -459,7 +469,14 @@ class Tokenizer {
             return Token.of(TokenType.Number, this.range(begin, this.cursor))
         }
 
-        while (this.isNumberContent(this.peek())) {
+        else if (this.peek() == '0' && this.at(this.cursor + 1) == 'b') {
+            this.skip(2)
+            while (this.isBinary(this.peek()))
+                this.get()
+            return Token.of(TokenType.Number, this.range(begin, this.cursor))
+        }
+
+        while (this.isNumberContent(this.upper(this.peek()))) {
             if (this.peek() == '.') {
                 if (this.at(this.cursor + 1) == '.') {
                     return Token.of(TokenType.Number, this.range(begin, this.cursor))
