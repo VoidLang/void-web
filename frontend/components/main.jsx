@@ -15,7 +15,7 @@ const eraseTime = 200
 const waitTime = 1500
 
 function typeIn(text) {
-    if (typing)
+    if (typing || !feature.setText)
         return
 
     let max = text.length

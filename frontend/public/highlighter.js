@@ -287,6 +287,7 @@ class Tokenizer {
             case "new":
             case "class":
             case "enum":
+            case "union":
             case "struct":
             case "interface":
             case "for":
@@ -301,6 +302,7 @@ class Tokenizer {
             case "continue":
             case "break":
             case "return":
+            case "returnif":
             case "await":
             case "goto":
             case "is":
@@ -309,6 +311,8 @@ class Tokenizer {
             case "where":
             case "defer":
             case "assert":
+            case "this":
+            case "super":
                 return true
             default:
                 return false
@@ -318,6 +322,7 @@ class Tokenizer {
     isType(token) {
         switch (token) {
             case "let":
+            case "var":
             case "byte":
             case "ubyte":
             case "short":
@@ -617,15 +622,15 @@ class Prettier {
             let value = token.value
 
             if (token.type == TokenType.String)
-                value = '"' + value + '"'
+                value = '"' + this.escape(value) + '"'
             else if (token.type == TokenType.Character)
-                value = '\'' + value + '\''
+                value = '\'' + this.escape(value) + '\''
 
             let style = STYLES[token.getName()]
 
             if (token.type == TokenType.Identifier) {
-                if (this.peek().eq(TokenType.Separator, '(') || (this.peek().eq(TokenType.Operator, '<') 
-                        && token.value.charAt(0) == token.value.charAt(0).toLowerCase())) 
+                if ((this.peek().eq(TokenType.Separator, '(') || this.peek().eq(TokenType.Operator, '<')) 
+                        && token.value.charAt(0) == token.value.charAt(0).toLowerCase())
                     style = STYLES.Method
                 else {
                     const normal = token.value.charAt(0)
@@ -678,6 +683,12 @@ class Prettier {
         }
 
         return elements
+    }
+
+    escape(string) {
+        return string
+            .replace('<', '&lt;')
+            .replace('>', '&gt;')
     }
 
     at(index) {

@@ -37,11 +37,11 @@ const Footer = () => {
     )
 }
 
-const Type = (x) => React.createElement("span", {class: "type"}, x);
-const String = (x) => React.createElement("span", {class: "string"}, x);
-const Light = (x) => React.createElement("span", {class: "light"}, x);
-const Solid = (x) => React.createElement("span", {class: "solid"}, x);
-const Literal = (x) => React.createElement("span", {class: "literal"}, x);
+const Type = (props) => React.createElement("span", {class: "type"}, props.content);
+const String = (props) => React.createElement("span", {class: "string"}, props.content);
+const Light = (props) => React.createElement("span", {class: "light"}, props.content);
+const Solid = (props) => React.createElement("span", {class: "solid"}, props.content);
+const Literal = (props) => React.createElement("span", {class: "literal"}, props.content);
 const Indent = () => React.createElement("div", {class: "indent"});
 const DoubleIndent = () => React.createElement("div", {class: "indent2"});
 const Line = () => React.createElement("div", {class: "line"});
@@ -93,7 +93,7 @@ const typeTime = 500
 const eraseTime = 200
 const waitTime = 1500
 function typeIn(text) {
-    if (typing)
+    if (typing || !feature.setText)
         return
     let max = text.length
     let index = 0
@@ -150,7 +150,12 @@ const Main = () =>  {
     );
 }
 
-const Nav = () => {
+/**
+ * 
+ * @param {Properties} props 
+ * @returns 
+ */
+const Nav = (props) => {
     return (
         React.createElement("div", {class: "nav"}, 
             React.createElement("div", {class: "nav-left nav-side"}, 
@@ -159,7 +164,13 @@ const Nav = () => {
                 )
             ), 
             React.createElement("div", {class: "nav-right nav-side"}, 
-                React.createElement("a", {href: "/docs", class: "link"}, "Docs"), 
+                
+                    props.attributes.docs ? (
+                        React.createElement("a", {href: "/std", class: "link"}, "Std")
+                    ) : (
+                        React.createElement("a", {href: "/docs", class: "link"}, "Docs")
+                    ), 
+                
                 React.createElement("a", {href: "https://github.com/voidlang/void", target: "_blank", class: "link"}, "GitHub"), 
                 React.createElement("a", {href: "https://github.com/voidlang/void", target: "_blank", class: "button"}, "Try It")
             )
@@ -225,10 +236,10 @@ const Showcase = () => {
     )
 }
 
-const Backticks = (x) => React.createElement("span", {class: "backticks code"}, x)
-const Terminal = (x) => React.createElement("div", {class: "code block terminal"}, x)
-const Code = (x) => React.createElement("div", {class: "code block terminal"}, x)
-const Small = (x) => React.createElement("span", {class: "small"}, x)
+const Backticks = (props) => React.createElement("span", {class: "backticks code"}, props.content)
+const Terminal = (props) => React.createElement("div", {class: "code block terminal"}, props.content)
+const Code = (props) => React.createElement("div", {class: "code block terminal"}, props.content)
+const Small = (props) => React.createElement("span", {class: "small"}, props.content)
 
 const NotImplemented = () => (
     React.createElement("div", null, 
@@ -1913,7 +1924,7 @@ page = () => (
 app.register('404', page);
 page = () => (
     React.createElement("div", {style: "docs-parent"}, 
-        React.createElement(Nav, null), 
+        React.createElement(Nav, {docs: true}), 
         React.createElement("div", {class: "docs"}, 
             React.createElement("div", {class: "sidebar"}, 
                 React.createElement("div", {class: "category"}, 
@@ -2192,7 +2203,8 @@ let lastTopic
 window.addEventListener('load', () => { 
     docsRoot = document.getElementById('docs-root') 
     lastTopic = document.getElementById('docs-introduction')
-    lastTopic.classList.add('active')
+    if (lastTopic)
+        lastTopic.classList.add('active')
 })
 const togglePage = (page) => {
     if (lastTopic)
@@ -2222,3 +2234,120 @@ page = () => (
 );
 
 app.register('index', page);
+const sourceMapping = {
+    'async': {
+        'Future': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/async/Future.vs'
+    },
+    'collection': {
+        'Iterable': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/collection/Interable.vs',
+        'Iterator': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/collection/Iterator.vs',
+        'List': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/collection/List.vs',
+        'Stream': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/collection/Stream.vs',
+    },
+    'lang': {
+        'Console': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/lang/Console.vs',
+        'Object': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/lang/Object.vs'
+    },
+    'util': {
+        'Option': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/util/Option.vs',
+        'Pair': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/util/Pair.vs',
+        'Result': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/util/Result.vs'
+    },
+    'Common': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/Common.vs'
+}
+let lastClicked
+const componentClicked = (component) => {
+    const id = component.attributes.id
+    const url = component.attributes.url
+    fileClicked(component.handle(), id, url)
+}
+const fileClicked = (element, id, url) => {
+    if (element == lastClicked)
+        return
+    if (lastClicked)
+        lastClicked.classList.remove('active')
+    element.classList.add('active')
+    lastClicked = element
+    const item = `src-${id}`
+    const cache = localStorage.getItem(item)
+    if (cache) 
+        return updateCode(cache)
+    const http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+        if (http.readyState == 4 && http.status == 200) {
+            const code = highlight(http.responseText).parse()
+            localStorage.setItem(item, code)
+            updateCode(code)
+        }
+    }
+    http.open('GET', url, true);
+    http.send();
+}
+on('load', () => {
+    const file = document.getElementsByClassName('file')[0]
+    fileClicked(file, 'Future', 'https://raw.githubusercontent.com/VoidLang/Void/main/std/async/Future.vs')
+})
+const updateCode = (code) => {
+    const element = document.getElementById('std-code')
+    element.innerHTML = ''
+    setTimeout(() => {
+        element.innerHTML = code
+    }, 1);
+}
+const getFileHierarchy = () => {
+    const sidebar = React.createElement("div", {class: "sidebar"})
+    for (const name in sourceMapping) {
+        const element = handleElement(name, sourceMapping[name])
+        sidebar.addNode(element)
+    }
+    return sidebar
+}
+const handleElement = (elementName, elementValue) => {
+    if (typeof elementValue == 'string')
+        return handleFile(elementName, elementValue)
+    else
+        return handleDirectory(elementName, elementValue)
+}
+const handleDirectory = (dirName, directory) => {
+    const elements = []
+    
+    for (const name in directory) {
+        const element = handleElement(name, directory[name])
+        elements.push(element)
+    }
+    
+    return (
+        React.createElement("div", {class: "directory", id: dirName}, 
+            React.createElement("p", null, 
+                React.createElement("i", {class: "fa fa-folder"}), 
+                dirName
+            ), 
+             elements 
+        )
+    )
+}
+const handleFile = (fileName, fileUrl) => {
+    return (
+        React.createElement("div", {class: "file", id: fileName, url: fileUrl, onClick: componentClicked}, 
+            React.createElement("p", null, 
+                React.createElement("i", {class: "fal fa-file", "aria-hidden": "true"}), 
+                fileName + '.vs'
+            )
+        )
+    )
+}
+page = () => (
+    React.createElement("div", {style: "std-parent"}, 
+        React.createElement(Nav, null), 
+        React.createElement("div", {class: "std"}, 
+             getFileHierarchy(), 
+            React.createElement("div", {class: "content"}, 
+                React.createElement("div", {class: "wrapper", id: "std-root"}, 
+                    React.createElement("div", {class: "code block terminal", id: "std-code"})
+                )
+            )
+        )
+    )
+)
+
+app.register('std', page);

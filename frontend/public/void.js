@@ -141,7 +141,6 @@ class Component {
      * Refresh the inner html of this component.
      */
     refresh() {
-        console.log('refreshin', this.tag);
         if (this.rendered) {
             const element = document.getElementById(this.rendered.attributes.id);
             element.innerHTML = this.render().parse();
@@ -371,6 +370,18 @@ const __checkFunction = (func) => typeof func == 'function';
  */
 const __checkConstructor = (func) => !Object.hasOwn(Object.getPrototypeOf(func), 'constructor');
 
+class Properties {
+    /**
+     * Initialize the properties.
+     * @param {{}}} attributes 
+     * @param {Component[]} content 
+     */
+    constructor(attributes, content) {
+        this.attributes = attributes;
+        this.content = content;
+    }
+}
+
 class Void {
     /**
      * Handle react-like element creation.
@@ -394,7 +405,10 @@ class Void {
         // let the function create the parent component for this
         if (!isConstructor)
             // make the function create the component
-            return data(...content);
+            return data(new Properties(
+                attributes || {},
+                content || []
+            ));
 
         // handle class-based element creation
         // this method is used when creating elements with extended component classes

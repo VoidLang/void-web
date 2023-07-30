@@ -29,6 +29,10 @@ public enum VoidWeb {
             res.render("docs");
         });
 
+        server.get("/std", (req, res) -> {
+            res.render("std");
+        });
+
         server.error(404, (req, res) -> {
             res.render("404");
         });

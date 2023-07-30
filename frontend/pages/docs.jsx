@@ -1,6 +1,6 @@
 page = () => (
     <div style="docs-parent">
-        <Nav/>
+        <Nav docs/>
         <div class="docs">
             <div class="sidebar">
                 <div class="category">
@@ -283,7 +283,8 @@ let lastTopic
 window.addEventListener('load', () => { 
     docsRoot = document.getElementById('docs-root') 
     lastTopic = document.getElementById('docs-introduction')
-    lastTopic.classList.add('active')
+    if (lastTopic)
+        lastTopic.classList.add('active')
 })
 
 const togglePage = (page) => {

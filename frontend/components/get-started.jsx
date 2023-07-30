@@ -1,12 +1,12 @@
-const Type = (x) => <span class="type">{x}</span>;
+const Type = (props) => <span class="type">{props.content}</span>;
 
-const String = (x) => <span class="string">{x}</span>;
+const String = (props) => <span class="string">{props.content}</span>;
 
-const Light = (x) => <span class="light">{x}</span>;
+const Light = (props) => <span class="light">{props.content}</span>;
 
-const Solid = (x) => <span class="solid">{x}</span>;
+const Solid = (props) => <span class="solid">{props.content}</span>;
 
-const Literal = (x) => <span class="literal">{x}</span>;
+const Literal = (props) => <span class="literal">{props.content}</span>;
 
 const Indent = () => <div class="indent"/>;
 

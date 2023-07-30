@@ -1,4 +1,4 @@
-const Backticks = (x) => <span class="backticks code">{x}</span>
-const Terminal = (x) => <div class="code block terminal">{x}</div>
-const Code = (x) => <div class="code block terminal">{x}</div>
-const Small = (x) => <span class="small">{x}</span>
+const Backticks = (props) => <span class="backticks code">{props.content}</span>
+const Terminal = (props) => <div class="code block terminal">{props.content}</div>
+const Code = (props) => <div class="code block terminal">{props.content}</div>
+const Small = (props) => <span class="small">{props.content}</span>
