@@ -2248,6 +2248,11 @@ const sourceMapping = {
         'Console': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/lang/Console.vs',
         'Object': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/lang/Object.vs'
     },
+    'platform': {
+        'windows': {
+            'kernel32': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/platform/windows/kernel32.vs',
+        }
+    },
     'util': {
         'Option': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/util/Option.vs',
         'Pair': 'https://raw.githubusercontent.com/VoidLang/Void/main/std/util/Pair.vs',
